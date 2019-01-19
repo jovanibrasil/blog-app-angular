@@ -1,0 +1,14 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+.footer-copyright {
+    background-color: rgb(17, 16, 16);
+}
