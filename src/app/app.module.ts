@@ -10,6 +10,12 @@ import { AsidePostListComponent } from './aside-post-list/aside-post-list.compon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './main/main.component';
 import { PostComponent } from './post/post.component';
+import { PostManagementComponent } from './post-management/post-management.component';
+import { BlogManagementComponent } from './blog-management/blog-management.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { AboutComponent } from './about/about.component';
+import { ErrorViewComponent } from './error-view/error-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { PostComponent } from './post/post.component';
     PostListComponent,
     AsidePostListComponent,
     MainComponent,
-    PostComponent
+    PostComponent,
+    PostManagementComponent,
+    BlogManagementComponent,
+    SigninComponent,
+    SignupComponent,
+    AboutComponent,
+    ErrorViewComponent
   ],
   imports: [
     BrowserModule,
