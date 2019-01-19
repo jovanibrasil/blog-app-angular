@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { AsidePostListComponent } from './aside-post-list/aside-post-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MainComponent } from './main/main.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     PostListComponent,
-    AsidePostListComponent
+    AsidePostListComponent,
+    MainComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

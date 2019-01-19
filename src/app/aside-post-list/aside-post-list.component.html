@@ -1,3 +1,7 @@
-<p>
-  aside-post-list works!
-</p>
+<div>
+  <ul  style="list-style-type:none" >
+    <li *ngFor="let p of posts">
+        <a [routerLink]="['/post', p.id]">{{p.title}}</a>
+    </li>
+  </ul>  
+</div>
