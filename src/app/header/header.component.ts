@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { faBlog } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  faBlog = faBlog;
+
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  logout(){
+    console.log("logout")
   }
 
 }

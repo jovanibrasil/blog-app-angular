@@ -1,3 +1,40 @@
-<p>
-  header works!
-</p>
+<nav class="navbar navbar-expand-lg navbra-dark bg-dark">
+  <a class="navbar-brand text-warning" href="#">
+    <fa-icon [icon]="faBlog" ></fa-icon>
+    <span >MyBlog</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/categories">Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/postmanagement">Post Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/blogmanagement">Blog Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signin">SignIn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signup">SignUp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">SignOut</a>
+      </li>
+    </ul>
+  </div>
+</nav>
