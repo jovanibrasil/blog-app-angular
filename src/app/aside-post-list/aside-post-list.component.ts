@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostReference } from '../model/postReference';
+import { PostService } from '../post.service';
+import { Post } from '../model/post';
 
 @Component({
   selector: 'app-aside-post-list',
@@ -8,17 +9,11 @@ import { PostReference } from '../model/postReference';
 })
 export class AsidePostListComponent implements OnInit {
 
-  private posts: PostReference[];
+  private posts: Post[];
 
-  constructor() { 
+  constructor(private postService: PostService) { 
 
-    this.posts = [];
-
-    for (let index = 0; index < 10; index++) {
-      this.posts.push({
-        id: index, title: "Lorem ipsum" + index
-      });
-    }
+    this.posts = this.postService.getSimplePostTitleList(10);
 
   }
 

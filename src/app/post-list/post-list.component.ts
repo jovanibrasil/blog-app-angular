@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostSummary } from '../model/postSummary';
+import { Post } from '../model/post';
 import { post } from 'selenium-webdriver/http';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-list',
@@ -9,25 +10,10 @@ import { post } from 'selenium-webdriver/http';
 })
 export class PostListComponent implements OnInit {
 
-  private posts: PostSummary[];
+  private posts: Post[];
 
-  constructor() { 
-
-      this.posts = [];
-
-      let summary = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-      "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." + 
-      " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris" + 
-      "nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in" +
-      "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-      " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia" +  
-      "deserunt mollit anim id est laborum.";
-
-      for (let index = 0; index < 10; index++) {
-        this.posts.push({
-          id: index, title: "Lorem ipsum" + index, date: new Date(), userName: "Jovani Brasil", summary
-        })
-      }
+  constructor(private postService: PostService) { 
+      this.posts = this.postService.getLastPostsSummaries(20);      
   }
 
   ngOnInit() {}

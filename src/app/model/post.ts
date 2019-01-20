@@ -1,7 +1,8 @@
-export interface PostSummary {
+export interface Post {
     id: number;
     title: string;
-    userName: string;
+    author: string;
     date: Date;
     summary: string;
+    content: string;
 }
