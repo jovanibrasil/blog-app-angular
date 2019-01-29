@@ -1,7 +1,9 @@
-<div>
-  <p class="text-center">Best Posts</p>
-  <ul style="list-style-type:none" >
-    <li *ngFor="let p of posts">
+<div class="text-center">
+  <div >
+    <h4>Best Posts</h4>
+  </div>
+  <ul style="list-style-type:none; padding-left: 0px; " >
+    <li *ngFor="let p of posts" style=" padding: 2px 0px;">
         <a [routerLink]="['/post', p.id]">{{p.title}}</a>
     </li>
   </ul>  

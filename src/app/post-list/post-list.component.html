@@ -1,9 +1,12 @@
 <div *ngFor="let p of posts">
-    <h4 class="post-title">{{p.title}}</h4>
+
+    <a [routerLink]="[ '/post', p.id ]">
+        <h4 class="post-title">{{p.title}}</h4>
+    </a>
     <div class="post-date">
     Postado em {{p.date}} por {{p.author}}
     </div>
-    <p class="post-head-content">{{p.summary}}</p>
+    <p class="post-head-content">{{p.summary}}<a [routerLink]="[ '/post', p.id ]">Full post</a></p>
 </div>
 
 

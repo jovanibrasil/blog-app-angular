@@ -1,8 +1,12 @@
-<div class="container-fluid" >
-    <div class="row">
-      <div class="col-md-2" style="border-left: 1px solid #333; border-right: 0px">
+<div class="container-fluid" style="padding: 50px 10px">
+
+  <div class="row" >
+      <!-- Left sidebar: post author info -->
+      <div class="col-md-2" style="border-right: 1px solid #333">
           
       </div>
+
+      <!-- Post -->
       <div class="col-md-8">
         <article>
           <h2 class="title">{{post.title}}</h2>
@@ -12,8 +16,12 @@
           </div>
         </article>
       </div>
+
+      <!-- Right sidebar: best blog posts -->
       <div class="col-md-2" style="border-left: 1px solid #333; border-right: 0px">
           <app-aside-post-list></app-aside-post-list>
       </div>
+
     </div>
+
   </div>
