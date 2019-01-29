@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsidePostListComponent } from './aside-post-list.component';
+import { BestPostListComponent } from './best-post-list.component';
 
-describe('AsidePostListComponent', () => {
-  let component: AsidePostListComponent;
-  let fixture: ComponentFixture<AsidePostListComponent>;
+describe('BestPostListComponent', () => {
+  let component: BestPostListComponent;
+  let fixture: ComponentFixture<BestPostListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsidePostListComponent ]
+      declarations: [ BestPostListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AsidePostListComponent);
+    fixture = TestBed.createComponent(BestPostListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

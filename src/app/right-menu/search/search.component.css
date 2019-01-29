@@ -1,0 +1,36 @@
+
+.search-container {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #F8F8F8;
+    padding: 6px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    align-items: stretch;
+}
+
+input[type=text] {
+    padding: 6px;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 17px;
+    border: none;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+button {
+    padding: 6px 10px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+

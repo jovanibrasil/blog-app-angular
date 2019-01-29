@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { AsidePostListComponent } from './aside-post-list/aside-post-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './main/main.component';
 import { PostComponent } from './post/post.component';
@@ -16,6 +15,10 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
+import { RightMenuComponent } from './right-menu/right-menu.component';
+import { SearchComponent } from './right-menu/search/search.component';
+import { SubscribeComponent } from './right-menu/subscribe/subscribe.component';
+import { BestPostListComponent } from './right-menu/best-post-list/best-post-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,7 @@ import { ErrorViewComponent } from './error-view/error-view.component';
     HeaderComponent,
     FooterComponent,
     PostListComponent,
-    AsidePostListComponent,
+    RightMenuComponent,
     MainComponent,
     PostComponent,
     PostManagementComponent,
@@ -31,7 +34,10 @@ import { ErrorViewComponent } from './error-view/error-view.component';
     SigninComponent,
     SignupComponent,
     AboutComponent,
-    ErrorViewComponent
+    ErrorViewComponent,
+    SearchComponent,
+    SubscribeComponent,
+    BestPostListComponent
   ],
   imports: [
     BrowserModule,
