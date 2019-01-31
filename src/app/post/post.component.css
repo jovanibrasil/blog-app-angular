@@ -3,24 +3,3 @@
     text-align: justify;
 }
 
-.circular {
-    border-radius: 50%;
-    background-color: #F8F8F8;
-}
-
-.in-line {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.center {
-    align-items: center;
-    text-align:center;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-}
-
-a i {
-    margin: 5px 2px;
-}

@@ -54,8 +54,10 @@ export class PostService {
     this.posts = []
 
     for (let index = 0; index < 10; index++) {
+      let userId = index%2;
       this.posts.push({
-        id: index, title: "Lorem ipsum " + index, date: new Date(), author: "Jovani Brasil", summary, content
+        id: index, title: "Lorem ipsum " + index, date: new Date(), 
+        summary, content, userId
       })
     }
   }

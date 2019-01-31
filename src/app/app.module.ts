@@ -19,6 +19,7 @@ import { RightMenuComponent } from './right-menu/right-menu.component';
 import { SearchComponent } from './right-menu/search/search.component';
 import { SubscribeComponent } from './right-menu/subscribe/subscribe.component';
 import { BestPostListComponent } from './right-menu/best-post-list/best-post-list.component';
+import { UserInfoVbarComponent } from './post/user-info-vbar/user-info-vbar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BestPostListComponent } from './right-menu/best-post-list/best-post-lis
     ErrorViewComponent,
     SearchComponent,
     SubscribeComponent,
-    BestPostListComponent
+    BestPostListComponent,
+    UserInfoVbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,38 +1,16 @@
 <div class="container-fluid" style="padding: 50px 10px">
 
   <div class="row" >
-      <!-- Left sidebar: post author info -->
-      <div class="col-md-2" style="border-right: 1px solid #333; width: 100%; text-align: center; ">
-          
-          <img class="circular" src="/assets/img/profile-default.png" alt="Jovani Brasil" height="170px">
-
-          <div class="in-line center">
-              <a href="https://github.com/jovanibrasil" target="_blank" title="Github">
-                <i class="fa fa-github" style="font-size:32px; color: #000; "></i>
-              </a>
-              <a href="https://www.linkedin.com/in/jovanibrasil" target="_blank" title="Linkedin">
-                <i class="fa fa-linkedin" style="font-size:32px; color: #000;"></i>
-              </a>
-              <a href="" target="_blank" title="Google Scholar">
-                <i class="fa fa-graduation-cap" style="font-size:30px; color: #000;"></i>
-              </a>
-              <a href="" target="_blank" title="Lattes">
-                <img src="/assets/img/lattes-icon.png" height="26px" style="color: #000;"/>
-              </a>
-          </div>
-          
-          <div >
-              <i class="fa fa-phone"  title="Phone" style="font-size:16px; color: #000;"> +55 (51) 993585599</i><br/>
-              <i class="fa fa-envelope"  title="Email" style="font-size:16px; color: #000;"> jovanibrasil@gmail.com</i>
-          </div>
-
+     
+      <div class="col-md-2" style="border-right: 1px solid #333; ">
+        <app-user-info-vbar userId="{{post.userId}}"></app-user-info-vbar>
       </div>
 
       <!-- Post -->
       <div class="col-md-8">
         <article>
           <h2 class="title">{{post.title}}</h2>
-          <span>{{post.date}} by {{post.author}}</span>
+          <span>{{post.date}}</span>
           <div class="content">
             <p>{{post.content}}</p>
           </div>
