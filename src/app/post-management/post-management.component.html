@@ -1,6 +1,39 @@
-<div >
-  <p >
-    post-management works!
-  </p>
+<div class="container-fluid" style="position: absolute; top: 70px;">
+  <div class="row">
+    <div class="col-md-12">
+
+      <ul class="list-group list-group-flush">
+        <!-- create post button -->
+        <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#createPostModal" 
+          (click)="openCreatePostModal()">
+            <i class="fa fa-plus"></i> New post
+        </button>
+        <!-- post list -->
+        <li *ngFor="let post of posts" class="list-group-item">
+          {{post.title}}
+          <div class="pull-right">
+            <!-- show post (redirect to the post page) -->
+            <button type="button" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" [routerLink]="[ '/post', post.id ]">
+              <i class="fa fa-eye"></i>
+            </button>
+            <!-- show post configuration modal -->
+            <button type="button" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" 
+              data-toggle="modal" data-target="#postConfigurationModal" (click)="openPostConfiguration()">
+                <i class="fa fa-cog"></i>
+            </button>
+            <!-- show modal with edition tool -->
+            <button type="button" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" 
+              (click)="openEditPostModal(post)"> <i class="fa fa-pencil"></i>
+            </button>
+            <!-- delete the post -->
+            <button type="button" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" (click)="deletePost(post)">
+               <i class="fa fa-trash-o"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
+
 

@@ -69,6 +69,11 @@ export class PostService {
     return this.posts[id];
   }
 
+  getPostsByUserId(userId: number){
+    console.log(this.posts)
+    return this.posts.filter(p => p.userId == userId)
+  }
+
   /*
     Get a list of post summaries. The summary object also constains basic 
     post information like id, title, author and date.
@@ -82,6 +87,24 @@ export class PostService {
   */  
   getSimplePostTitleList(quantity: number){
     return this.posts.slice(0, quantity);
+  }
+
+  deletePost(post: Post){
+    let postIndex = this.posts.indexOf(post);
+    this.posts.splice(postIndex, 1);
+  }
+
+  createPost(post: Post){
+    this.posts.push(post);
+  }
+
+  updatePost(post: Post){
+    let postIndex = this.posts.indexOf(post);
+    this.posts[postIndex] = post;
+  }
+
+  updateConfiguration(post: Post){
+
   }
 
 }

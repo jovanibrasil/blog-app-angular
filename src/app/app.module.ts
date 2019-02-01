@@ -20,6 +20,10 @@ import { SearchComponent } from './right-menu/search/search.component';
 import { SubscribeComponent } from './right-menu/subscribe/subscribe.component';
 import { BestPostListComponent } from './right-menu/best-post-list/best-post-list.component';
 import { UserInfoVbarComponent } from './post/user-info-vbar/user-info-vbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PostModalComponent } from './post-management/post-modal/post-modal.component';
+import { PostConfigModalComponent } from './post-management/post-config-modal/post-config-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,14 +43,20 @@ import { UserInfoVbarComponent } from './post/user-info-vbar/user-info-vbar.comp
     SearchComponent,
     SubscribeComponent,
     BestPostListComponent,
-    UserInfoVbarComponent
+    UserInfoVbarComponent,
+    PostModalComponent,
+    PostConfigModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PostConfigModalComponent, PostModalComponent]
 })
 export class AppModule { }
