@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/post';
-import { PostService } from 'src/app/post.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-search',

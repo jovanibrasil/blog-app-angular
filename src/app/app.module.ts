@@ -24,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostModalComponent } from './post-management/post-modal/post-modal.component';
 import { PostConfigModalComponent } from './post-management/post-config-modal/post-config-modal.component';
+import { FeedbackComponent } from './about/feedback/feedback.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { PostConfigModalComponent } from './post-management/post-config-modal/po
     BestPostListComponent,
     UserInfoVbarComponent,
     PostModalComponent,
-    PostConfigModalComponent
+    PostConfigModalComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { PostConfigModalComponent } from './post-management/post-config-modal/po
     FontAwesomeModule,
     NgbModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

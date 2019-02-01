@@ -5,3 +5,7 @@
 html, body {
     height: 100%;
 }
+
+i, fa-icon {
+    padding: 1px 5px;
+}

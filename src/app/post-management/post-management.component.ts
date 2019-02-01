@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../model/post';
-import { PostService } from '../post.service';
+import { PostService } from '../services/post.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostConfigModalComponent } from './post-config-modal/post-config-modal.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
