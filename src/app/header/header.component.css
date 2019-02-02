@@ -1,9 +1,28 @@
 .navbar {
-    padding: 0px;
+    padding: 0px 10px;
+    height: 60px;
 }
 
-a {
+li a, .vertical-centered {
     color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+li {
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+li, ul, a {
+    height: 100%;
+}
+
+.navbar-collapse {
+    height: 100%;
 }
 
 li a:hover { 

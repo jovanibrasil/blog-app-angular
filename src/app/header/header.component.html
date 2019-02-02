@@ -1,21 +1,23 @@
 <nav class="navbar navbar-expand-lg navbra-dark bg-dark">
-  <a class="navbar-brand text-warning" href="#">
-    <fa-icon [icon]="faBlog" ></fa-icon>
-    <span >MyBlog</span>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="vertical-centered">
+    <a class="navbar-brand text-warning" href="#">
+      <fa-icon [icon]="faBlog" ></fa-icon>
+      <span >MyBlog</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" (click)="setActive($event)">
         <a class="nav-link" routerLink="/">Home</a>
       </li>
-      <li class="nav-item" (click)="setActive($event)">
+      <li *ngIf="authority === 'ROLE_USER'" class="nav-item" (click)="setActive($event)">
         <a class="nav-link" routerLink="/post-management">Post Management</a>
       </li>
-      <li class="nav-item" (click)="setActive($event)">
+      <li *ngIf="authority === 'ADMIN_USER'" class="nav-item" (click)="setActive($event)">
         <a class="nav-link" routerLink="/blog-management">Blog Management</a>
       </li>
       <li class="nav-item" (click)="setActive($event)">
@@ -23,15 +25,19 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signin">SignIn</a>
+
+      <li *ngIf="authority" class="nav-item">
+        <a class="nav-link" style="color: white" (click)="logout()">Logout</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signup">SignUp</a>
+
+      <li *ngIf="!authority && getLocationPath() != '/signup'" >
+        <a class="nav-link" routerLink="/signup">Signup</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" style="color: white" (click)="logout()">SignOut</a>
+
+      <li *ngIf="!authority && getLocationPath() != '/signin'" >
+          <a class="nav-link" routerLink="/">Signin</a>
       </li>
+
     </ul>
   </div>
 </nav>
