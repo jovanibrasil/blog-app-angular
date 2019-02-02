@@ -1,3 +1,24 @@
+.navbar {
+    padding: 0px;
+}
+
 a {
     color: white;
+}
+
+li a:hover { 
+    background-color: black !important;
+}
+
+.navbar-brand {
+    color: rgb(207, 162, 77);
+}
+
+.navbar-nav li.active > a {
+	background-color: rgb(207, 162, 77);
+	color: white;
+}
+
+nav-link {
+    height: 100%;
 }

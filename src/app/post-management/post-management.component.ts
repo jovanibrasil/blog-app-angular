@@ -44,7 +44,6 @@ export class PostManagementComponent implements OnInit {
   }
 
   getPostsByUserId() {
-    console.log("atualizando lista de posts")
     this.posts = [];
     return this.postService.getPostsByUserId(1).forEach(p => this.posts.push(p))
   }
@@ -69,8 +68,6 @@ export class PostManagementComponent implements OnInit {
     modalRef.componentInstance.post = post;
     
     modalRef.result.then((result) => {
-      
-      console.log("Retorno: ", result);
       
       if(result){
         formCallback(result);

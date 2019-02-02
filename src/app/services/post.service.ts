@@ -70,7 +70,6 @@ export class PostService {
   }
 
   getPostsByUserId(userId: number){
-    console.log(this.posts)
     return this.posts.filter(p => p.userId == userId)
   }
 

@@ -11,10 +11,18 @@ export class HeaderComponent implements OnInit {
 
   faBlog = faBlog;
 
+  lastActiveElement: any = null;
+
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  setActive(event: any){
+    let current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    event.currentTarget.className = "nav-item active"
   }
 
   logout(){
