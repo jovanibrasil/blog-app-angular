@@ -9,7 +9,7 @@ import { PostService } from '../../services/post.service';
 })
 export class PostListComponent implements OnInit {
 
-  private posts: Post[];
+  posts: Post[];
 
   constructor(private postService: PostService) { 
       this.posts = this.postService.getLastPostsSummaries(20);      

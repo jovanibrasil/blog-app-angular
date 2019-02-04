@@ -9,8 +9,9 @@ import { Post } from 'src/app/model/post';
   templateUrl: './post-modal.component.html',
   styleUrls: ['./post-modal.component.css']
 })
-export class PostModalComponent implements OnInit {
+export class PostModalComponent implements OnInit { 
 
+  title: string = "Title";
   @Input() modalTitle: string = "";
   @Input() post: Post;
 

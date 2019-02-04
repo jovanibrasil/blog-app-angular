@@ -12,8 +12,8 @@ import { User } from '../model/user';
 })
 export class PostComponent implements OnInit {
 
-  private id: number;
-  private post: Post;
+  id: number;
+  post: Post;
 
   constructor(private route: ActivatedRoute, private postService: PostService) {}
 

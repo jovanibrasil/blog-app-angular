@@ -10,7 +10,7 @@ import { faBlog } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
 
   faBlog = faBlog;
-  private authority: string = null;
+  authority: string = 'ROLE_USER';
   lastActiveElement: any = null;
 
   constructor() { }

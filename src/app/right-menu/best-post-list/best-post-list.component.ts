@@ -9,7 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class BestPostListComponent implements OnInit {
 
-  private posts: Post[];
+  posts: Post[];
 
   constructor(private postService: PostService) {
     this.posts = this.postService.getSimplePostTitleList(10);
