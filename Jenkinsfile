@@ -30,8 +30,8 @@ pipeline {
 
         stage("Remove temporary files"){
             steps {
-                echo 'cleaning ...'
-                echo 'rm ~/workspace/blog-app ~/workspace/blog-app@tmp -rf'
+                // echo 'cleaning ...'
+                // echo 'rm ~/workspace/blog-app ~/workspace/blog-app@tmp -rf'
             }
         }
 
