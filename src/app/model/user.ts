@@ -3,6 +3,7 @@ export interface User {
     userName: string;
     fullName: String;
     email: string;
+    phone: string;
     // network references
     gitHubUserName: string;
     linkedInUserName: string;
