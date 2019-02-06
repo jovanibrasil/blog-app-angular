@@ -1,12 +1,63 @@
-<div *ngFor="let p of posts">
 
-    <a [routerLink]="[ '/post', p.id ]">
-        <h4 class="post-title">{{p.title}}</h4>
-    </a>
-    <div class="post-date">
-    Postado em {{p.date}} por {{p.author}}
+<!-- <div class="row">
+    <div class="col-md-12"> -->
+        <!-- Message if there are no notes
+        <h3><p *ngIf="selectedNotebook != null">{{selectedNotebook.name}}</p></h3>
+        <h3><p *ngIf="selectedNotebook == null">All notes</p></h3>
+        <p *ngIf="this.notes.length === 0">There are no notes do display in this notebook</p> -->
+    <!-- </div> -->
+<!-- </div> -->
+<div class="row">
+    <!-- Note list -->
+    <div *ngFor="let p of posts">
+
+        <div class="card">
+            <div class="card-body">
+    
+                <div class="post">
+
+                    <div class="post-title">
+                        <a [routerLink]="[ '/post', p.id ]">
+                            <h4 >{{p.title}}</h4>
+                        </a>        
+                    </div>
+
+                    <div class="post-info">
+                        Postado em {{p.date}} por {{p.author}}
+                    </div>
+
+                    <div class="in-line">
+                        
+                        <img src="/assets/img/image-not-found.png" />
+                        
+                        <div class="post-summary">
+                            <p class="post-head-content">{{p.summary}}<a [routerLink]="[ '/post', p.id ]"><span>Full post</span></a></p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+    
+                <!-- Title -->            
+                <!-- <div>
+                    <input type="text" class="input-label-lg" maxlength="18" 
+                        (change)="updateNote()" style="width: 80%" [(ngModel)]=note.title>
+                    <a class="pull-right text-danger" (click)="deleteNote()">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div> -->
+                <!-- Text -->
+                <!-- <textarea class="input-label" style="width:100%;" rows="6" (change)="updateNote()" [(ngModel)]=note.text></textarea> -->
+                <!-- Text info: last modification -->
+                <!-- <strong class="text-info" style="font-size:small;">{{note.lastModifiedOn | date:'dd-MM-yyyy HH:mm'}}</strong> -->
+            </div>
+        </div>
+
     </div>
-    <p class="post-head-content">{{p.summary}}<a [routerLink]="[ '/post', p.id ]"><span>Full post</span></a></p>
+        
+
 </div>
+
 
 
