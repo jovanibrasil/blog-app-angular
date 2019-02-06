@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faBlog } from '@fortawesome/free-solid-svg-icons';
+import { faLaptop } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { faBlog } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
-  faBlog = faBlog;
+  faLaptop = faLaptop;
   authority: string = 'ROLE_USER';
   lastActiveElement: any = null;
 
