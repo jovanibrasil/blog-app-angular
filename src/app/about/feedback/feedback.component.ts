@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilsService } from '../../services/utils.service';
+import { Feedback } from 'src/app/model/feedback';
 
 @Component({
   selector: 'app-feedback',
@@ -9,11 +10,7 @@ import { UtilsService } from '../../services/utils.service';
 })
 export class FeedbackComponent implements OnInit {
 
-  model: FeedbackViewModel = {
-    name: '',
-    email: '',
-    feedback: ''
-  };
+  model: Feedback;
 
   constructor(private http: HttpClient, private apiService: UtilsService) { }
 

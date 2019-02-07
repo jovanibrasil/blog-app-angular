@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../model/post';
 import { PostService } from '../../services/post.service';
+import { Summary } from "src/app/model/summary";
 
 @Component({
   selector: 'app-post-list',
@@ -9,12 +10,22 @@ import { PostService } from '../../services/post.service';
 })
 export class PostListComponent implements OnInit {
 
-  posts: Post[];
+  summaries: Summary[];
 
-  constructor(private postService: PostService) { 
-      this.posts = this.postService.getLastPostsSummaries(20);      
+  constructor(private postService: PostService) {}
+
+  ngOnInit() {
+    this.getLastPostsSummaries();
   }
 
-  ngOnInit() {}
+  getLastPostsSummaries(){
+    this.postService.getLastPostsSummaries(6).subscribe(
+      res => { 
+        this.summaries = res.data;
+        console.log(res);
+      }, 
+      err => {}
+    );
+  }
 
 }

@@ -16,7 +16,7 @@ export class PostModalComponent implements OnInit {
   @Input() post: Post;
 
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
-    this.post = { id: 0, title: "", date: null, summary: "", content: "", userId: 0 };
+    this.post = { id: 0, title: "", date: null, summary: "", body: "", userId: 0 };
   }
 
   ngOnInit() { }

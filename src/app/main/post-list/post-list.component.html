@@ -9,7 +9,7 @@
 <!-- </div> -->
 <div class="row">
     <!-- Note list -->
-    <div *ngFor="let p of posts">
+    <div *ngFor="let s of summaries">
 
         <div class="card">
             <div class="card-body">
@@ -17,13 +17,13 @@
                 <div class="post">
 
                     <div class="post-title">
-                        <a [routerLink]="[ '/post', p.id ]">
-                            <h4 >{{p.title}}</h4>
+                        <a [routerLink]="[ '/post', s.id ]">
+                            <h4 >{{s.title}}</h4>
                         </a>        
                     </div>
 
                     <div class="post-info">
-                        Postado em {{p.date}} por {{p.author}}
+                        Postado em {{s.date}} por {{s.userName}}
                     </div>
 
                     <div class="in-line">
@@ -31,7 +31,7 @@
                         <img src="/assets/img/image-not-found.png" />
                         
                         <div class="post-summary">
-                            <p class="post-head-content">{{p.summary}}<a [routerLink]="[ '/post', p.id ]"><span>Full post</span></a></p>
+                            <p class="post-head-content">{{s.summary}}<a [routerLink]="[ '/post', s.id ]"><span>Full post</span></a></p>
                         </div>
                         
                     </div>

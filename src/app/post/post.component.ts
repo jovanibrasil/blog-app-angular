@@ -12,18 +12,21 @@ import { User } from '../model/user';
 })
 export class PostComponent implements OnInit {
 
-  id: number;
   post: Post;
 
-  constructor(private route: ActivatedRoute, private postService: PostService) {}
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-
-      this.id = +params['id'];
-      this.post = this.postService.getFullPostById(this.id);
-      
+  constructor(private route: ActivatedRoute, private postService: PostService) {
+    this.route.paramMap.subscribe(params => {
+      this.getFullPostById(+params.get('id'));      
     })
+  }
+
+  ngOnInit() {}
+
+  getFullPostById(id: number){
+    this.postService.getFullPostById(id).subscribe(
+      res => { this.post = res.data },
+      err => {}
+    );
   }
 
 }

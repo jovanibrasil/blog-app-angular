@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
+import { Post } from 'src/app/model/post';
 
 @Component({
   selector: 'app-user-info-vbar',
@@ -10,12 +11,23 @@ import { UserService } from 'src/app/services/user.service';
 export class UserInfoVbarComponent implements OnInit {
 
   @Input() userId: number;
+  
   user: User;
   
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.userService.getUser(this.userId);
+    this.user = { email: "teste", gitHubUserName: null, fullName: null, 
+      googleScholarLink: null, lattesLink: null, linkedInUserName: null, 
+    phone: null, userName: null } 
+    this.getUser();
+  }
+
+  getUser(){
+    this.userService.getUser(this.userId).subscribe(
+      res => { this.user = res.data; },
+      err => {}
+    );
   }
 
 }

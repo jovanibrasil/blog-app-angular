@@ -23,29 +23,46 @@ export class PostManagementComponent implements OnInit {
 
   createPost(post: Post){
     console.log("create post");
-    this.postService.createPost(post);
-    this.getPostsByUserId();
+    post.summary = "Temp Summary"
+    this.postService.createPost(post).subscribe(
+      res => { this.posts.push(res.data) },
+      err => {}
+    );
   }
 
   updatePost(post: Post){
     console.log("update post");
-    this.postService.updatePost(post);
-    this.getPostsByUserId();
+    this.postService.updatePost(post).subscribe(
+      res => { 
+        let index = this.posts.indexOf(post);
+        this.posts[index] = res.data; 
+      },
+      err => {}
+    );
   }
 
   updatePostConfiguration(post: Post){
     console.log("update post configuration")
+    // TODO
   }
 
   deletePost(post: Post){
-    console.log("delete post");
-    this.postService.deletePost(post);
-    this.getPostsByUserId();
+    this.postService.deletePost(post).subscribe(
+      res => {
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+      }, 
+      err => {}
+    );
   }
 
   getPostsByUserId() {
-    this.posts = [];
-    return this.postService.getPostsByUserId(1).forEach(p => this.posts.push(p))
+    this.postService.getPostsByUserId(1).subscribe(
+      res => {
+        this.posts = res.data;
+      },
+      err => {}
+    )
   }
   
   openPostConfiguration(post: Post){
@@ -54,7 +71,7 @@ export class PostManagementComponent implements OnInit {
   }
 
   openCreatePostModal(){
-    let post = { id: 0, title: "", date: null, summary: "", content: "", userId: 1 };
+    let post = { id: 0, title: "", date: null, summary: "", body: "", userId: 1 };
     this.openFormModal(post, PostModalComponent, "Create post", this.createPost.bind(this));
   }
 

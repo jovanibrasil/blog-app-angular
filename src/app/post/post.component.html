@@ -1,6 +1,6 @@
 <div class="container-fluid" style="padding: 50px 10px">
 
-  <div class="row" >
+  <div *ngIf="post" class="row" >
      
       <div class="col-md-2" style="border-right: 1px solid #333; ">
         <app-user-info-vbar userId="{{post.userId}}"></app-user-info-vbar>
@@ -10,9 +10,9 @@
       <div class="col-md-8">
         <article>
           <h2 class="title">{{post.title}}</h2>
-          <span>{{post.date}}</span>
+          <span>{{post.lastUpdateDate}}</span>
           <div class="content">
-            <p>{{post.content}}</p>
+            <p>{{post.body}}</p>
           </div>
         </article>
       </div>

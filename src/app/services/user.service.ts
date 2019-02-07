@@ -1,39 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ResponseWrapper } from '../model/response-wrapper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  users: User[];
+  private BASE_URL = "http://localhost:8081";
+  private USER_BY_ID_URL = `${this.BASE_URL}/user/`;
 
-  constructor() {
-    this.users = []  
-    this.users.push({
-      userName: "jovanibrasil1",
-      fullName: "Jovani Brasil1",
-      email: "jovanibrasil1@gmail.com",
-      phone: null,
-      gitHubUserName: "jovanibrasil1",
-      linkedInUserName: "jovanibrasil1",
-      googleScholarLink: null,
-      lattesLink: null
-    })
-    this.users.push({
-      userName: "jovanibrasil2",
-      fullName: "Jovani Brasil2",
-      email: "jovanibrasil2@gmail.com",
-      phone: "+55 (51) 993585599",
-      gitHubUserName: "jovanibrasil2",
-      linkedInUserName: "jovanibrasil2",
-      googleScholarLink: null,
-      lattesLink: null
-    })
-  }
+  constructor(private http: HttpClient) {}
 
-  getUser(userId: number): User {
-    return this.users[userId];
+  getUser(userId: number): Observable<ResponseWrapper> {
+    //return this.users[userId];
+    return this.http.get<ResponseWrapper>(this.USER_BY_ID_URL + userId);
   }
 
 }
