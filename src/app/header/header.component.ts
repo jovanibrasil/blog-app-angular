@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   faLaptop = faLaptop;
   authority: string = 'ROLE_USER';
-  lastActiveElement: any = null;
+  lastActiveElement: any = '';
 
   constructor() { }
 

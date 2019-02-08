@@ -1,9 +1,9 @@
 .navbar {
-    padding: 0px 10px;
-    height: 60px;
+    padding: 15px 10px;
+    /* height: 60px; */
 }
 
-li a, .vertical-centered {
+/* li a, .vertical-centered {
     color: white;
     display: flex;
     justify-content: center;
@@ -14,22 +14,22 @@ li a, .vertical-centered {
 li {
     display: flex;
     align-items: center;
-  justify-content: center;
+    justify-content: center;
 }
 
 li, ul, a {
     height: 100%;
-}
+} */
 
-.navbar-collapse {
+/* .navbar-collapse {
     height: 100%;
-}
+} */
 
-li a:hover { 
+/* li a:hover { 
     background-color: black !important;
-}
+} */
 
-.navbar-brand {
+/* .navbar-brand {
     color: rgb(207, 162, 77);
 }
 
@@ -40,4 +40,4 @@ li a:hover {
 
 nav-link {
     height: 100%;
-}
+} */
