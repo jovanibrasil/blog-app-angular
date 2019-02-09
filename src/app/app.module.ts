@@ -11,8 +11,8 @@ import { MainComponent } from './main/main.component';
 import { PostComponent } from './post/post.component';
 import { PostManagementComponent } from './post-management/post-management.component';
 import { BlogManagementComponent } from './blog-management/blog-management.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
@@ -25,7 +25,11 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostModalComponent } from './post-management/post-modal/post-modal.component';
 import { PostConfigModalComponent } from './post-management/post-config-modal/post-config-modal.component';
 import { FeedbackComponent } from './about/feedback/feedback.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToasterComponent } from './toaster/toaster.component'
+import { RequestInterceptor } from './shared/interceptors/request.interceptor';
+import { ResponseInterceptor } from './shared/interceptors/response.interceptor';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserInfoVbarComponent,
     PostModalComponent,
     PostConfigModalComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [PostConfigModalComponent, PostModalComponent]
 })

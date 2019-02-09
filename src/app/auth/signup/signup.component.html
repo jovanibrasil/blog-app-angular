@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" class="border border-light p-5 mt-5 center-block" style="background-color: white; border-radius: 25px;" 
+      name="form" (ngSubmit)="f.form.valid && createUser()" #f="ngForm" novalidate>
+
+        <p class="h4 mb-4 text-center">Sign up</p>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" placeholder="Email"
+          [ngClass]="{'is-invalid': f.submitted && !email.valid}" required email/>
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <div class="text-danger" *ngIf="email.errors?.required">Email is required</div>
+            <div class="text-danger" *ngIf="email.errors?.email">Email is not valid</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username"  class="form-control" [(ngModel)]="model.userName" #username="ngModel"
+          [ngClass]="{'is-invalid': f.submitted && !username.valid}" placeholder="Username" required minlength="2">
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <div class="text-danger" *ngIf="username.errors?.required">Username is required</div>
+            <div class="text-danger" *ngIf="username.errors?.minlength">UserName minimum length is 2 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password"  class="form-control" [(ngModel)]="model.password" #password="ngModel" 
+          [ngClass]="{'is-invalid': f.submitted && !password.valid}" placeholder="Password" required minlength="4">
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <div class="text-danger" *ngIf="password.errors?.required">Password is required</div>
+            <div class="text-danger" *ngIf="password.errors?.minlength">Password minimum length is 2 characters</div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-info my-4" [disabled]="loading">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>

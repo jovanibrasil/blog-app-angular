@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UtilsService } from '../../services/utils.service';
-import { Feedback } from 'src/app/model/feedback';
+import { UtilsService } from '../../shared/services/utils.service';
+import { Feedback } from 'src/app/models/feedback';
 
 @Component({
   selector: 'app-feedback',

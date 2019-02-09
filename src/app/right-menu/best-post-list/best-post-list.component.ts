@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/services/post.service';
-import { PostInfo } from 'src/app/model/post-info';
+import { PostService } from 'src/app/shared/services/post.service';
+import { PostInfo } from 'src/app/models/post-info';
 
 @Component({
   selector: 'app-best-post-list',

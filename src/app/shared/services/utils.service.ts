@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FeedbackViewModel } from '../about/feedback/feedback.component';
+import { FeedbackViewModel } from '../../about/feedback/feedback.component';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Feedback } from '../model/feedback';
+import { Feedback } from '../../models/feedback';
 
 @Injectable({
   providedIn: 'root'

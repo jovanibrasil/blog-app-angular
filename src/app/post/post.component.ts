@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostService } from '../services/post.service';
-import { Post } from '../model/post';
+import { PostService } from '../shared/services/post.service';
+import { Post } from '../models/post';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
-import { User } from '../model/user';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-post',

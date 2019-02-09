@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../model/post';
+import { Post } from '../../models/post';
 import { HttpClient } from '@angular/common/http';
 import { Observable, fromEventPattern } from 'rxjs';
 
-import * as CONS from './paths';
-import { PostInfo } from '../model/post-info';
-import { Summary } from "../model/summary";
-import { ResponseWrapper } from '../model/response-wrapper';
+import * as CONS from './vars';
+import { PostInfo } from '../../models/post-info';
+import { Summary } from "../../models/summary";
+import { ResponseWrapper } from '../../models/response-wrapper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  private BASE_URL = CONS.PROD_ENV_PATH;
+  private BASE_URL = CONS.AUTH_BASE_URL;
   
   private DELETE_POST_URL = `${this.BASE_URL}/posts/delete/`;
   private SAVE_POST_URL = `${this.BASE_URL}/posts/create`;

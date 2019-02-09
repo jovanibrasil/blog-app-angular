@@ -39,12 +39,12 @@
             <a class="nav-link" style="color: white" (click)="logout()">Logout</a>
           </li>
     
-          <li *ngIf="!authority && getLocationPath() != '/signup'" >
+          <!-- <li *ngIf="!authority && getLocationPath() != '/signup'" >
             <a class="nav-link" routerLink="/signup">Signup</a>
-          </li>
+          </li> -->
     
-          <li *ngIf="!authority && getLocationPath() != '/signin'" >
-              <a class="nav-link" routerLink="/">Signin</a>
+          <li *ngIf="!authority" >
+              <a class="nav-link" routerLink="/signin">Signin</a>
           </li>
     
         </ul>

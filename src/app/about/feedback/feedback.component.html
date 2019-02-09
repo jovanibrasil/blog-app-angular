@@ -1,9 +1,10 @@
-<div style="height: 100%; background-color: white; border-radius: 5px; padding: 10px;">
+<div style="background-color: white; border-radius: 5px; padding: 10px; ">
   <!-- #field_name is an alias for an element. -->
   <!-- The feedback will be send only if the form is valid. -->
-  <form name="form" #f="ngForm" class="feedback-form " (ngSubmit)="f.form.valid && sendFeedback()" novalidate>
+
+  <form name="form" #f="ngForm" class="feedback-form" (ngSubmit)="f.form.valid && sendFeedback()" novalidate>
     
-    <p class="h4 mb-4 text-center">Give us your feedback</p>
+    <p class="h4 mb-4 text-center">Give me your feedback</p>
     
     <div class="form-group">
       <label for="title">Title</label>
@@ -35,7 +36,7 @@
       <i class="fa fa-envelope-o"></i>
       <span>Send Feedback</span>
     </button>
-
+  
   </form>
 </div>
 
