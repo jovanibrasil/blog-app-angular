@@ -4,6 +4,8 @@
 
 html, body {
     height: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif,  'Times New Roman', Times, serif;
+    font-size: 1.1em;
 }
 
 i, fa-icon {
