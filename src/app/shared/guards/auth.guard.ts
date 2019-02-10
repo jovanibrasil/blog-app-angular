@@ -16,6 +16,6 @@ export class AuthGuard implements CanActivate {
       this.route.navigate(['signin']);
       this.toasterService.info("Unauthorized access. Please, signin to continue.");
     }
-    return this.tokenStorageService.isLogged();
+    return true;
   }
 }
