@@ -2,9 +2,9 @@
 .search-container {
     display: flex;
     flex-flow: row nowrap;
-    background-color: #F8F8F8;
-    padding: 6px 0px;
-    margin-top: 10px;
+    background-color: darkgray;
+    border-radius: 5px;
+    padding: 5px 5px;
     margin-bottom: 10px;
     font-size: 17px;
     border: none;
@@ -13,9 +13,8 @@
 }
 
 input[type=text] {
-    padding: 6px;
-    margin-top: 5px;
-    margin-left: 5px;
+    padding: 5px;
+    border-radius: 5px 0px 0px 5px;
     font-size: 17px;
     border: none;
     width: 100%;
@@ -28,6 +27,7 @@ button:hover {
 button {
     padding: 6px 10px;
     background: #ddd;
+    border-radius: 0px 5px 5px 0px;
     font-size: 17px;
     border: none;
     cursor: pointer;

@@ -15,6 +15,9 @@ export class TokenStorageService {
     private theBoolean: BehaviorSubject<boolean>;
 
     constructor() {
+        window.sessionStorage.removeItem(this.TOKEN_KEY);
+        window.sessionStorage.removeItem(this.USERNAME_KEY);
+        window.sessionStorage.removeItem(this.AUTHORITIES_KEY); 
         this.loggedInStatus = false;
         this.theBoolean = new BehaviorSubject<boolean>(false);
     }

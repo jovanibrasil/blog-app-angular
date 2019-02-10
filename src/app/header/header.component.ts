@@ -21,11 +21,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.updateNavigation();
-      this.tokenStorageService.getTheBoolean().subscribe(
-          value => { 
-              this.updateNavigation() 
-          }
-      );
+    this.tokenStorageService.getTheBoolean().subscribe(
+        value => { 
+            console.log("token storage update")
+            this.updateNavigation() 
+        }
+    );
   }
 
   updateNavigation(){
