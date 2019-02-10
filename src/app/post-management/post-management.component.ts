@@ -4,6 +4,7 @@ import { PostService } from '../shared/services/post.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostConfigModalComponent } from './post-config-modal/post-config-modal.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
+import { ToasterService } from '../shared/services/toaster.service';
 
 @Component({
   selector: 'app-post-management',
@@ -15,7 +16,7 @@ export class PostManagementComponent implements OnInit {
   posts: Post[] = [];
   selectedPost: Post = null;
 
-  constructor(private postService: PostService, private modalService: NgbModal) {}
+  constructor(private postService: PostService, private modalService: NgbModal, private toasterService: ToasterService) {}
 
   ngOnInit() {
     this.getPostsByUserId();
@@ -25,8 +26,13 @@ export class PostManagementComponent implements OnInit {
     console.log("create post");
     post.summary = "Temp Summary"
     this.postService.createPost(post).subscribe(
-      res => { this.posts.push(res.data) },
-      err => {}
+      res => { 
+        this.posts.push(res.data);
+        this.toasterService.success("The post has been created successfully.");
+      },
+      err => {
+        this.toasterService.error("It was not possible to create the post.");
+      }
     );
   }
 
@@ -36,8 +42,11 @@ export class PostManagementComponent implements OnInit {
       res => { 
         let index = this.posts.indexOf(post);
         this.posts[index] = res.data; 
+        this.toasterService.success("The post has been updated successfully.");
       },
-      err => {}
+      err => {
+        this.toasterService.error("It was not possible to update the post.");
+      }
     );
   }
 
@@ -51,17 +60,23 @@ export class PostManagementComponent implements OnInit {
       res => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
+        this.toasterService.success("The post has been deleted successfully.");
       }, 
-      err => {}
+      err => {
+        this.toasterService.error("It was not possible to delete the post.");
+      }
     );
   }
 
   getPostsByUserId() {
-    this.postService.getPostsByUserId(1).subscribe(
+    let userId = 1;
+    this.postService.getPostsByUserId(userId).subscribe(
       res => {
         this.posts = res.data;
       },
-      err => {}
+      err => {
+        this.toasterService.error("It was not possible to get the post.");
+      }
     )
   }
   
