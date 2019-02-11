@@ -38,6 +38,7 @@ export class PostManagementComponent implements OnInit {
 
   updatePost(post: Post){
     console.log("update post");
+    console.log(post);
     this.postService.updatePost(post).subscribe(
       res => { 
         let index = this.posts.indexOf(post);

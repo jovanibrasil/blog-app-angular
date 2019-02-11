@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,6 +29,8 @@ import { ToasterComponent } from './toaster/toaster.component'
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { ResponseInterceptor } from './shared/interceptors/response.interceptor';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { JoditAngularModule } from 'jodit-angular';
+import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     PostModalComponent,
     PostConfigModalComponent,
     FeedbackComponent,
-    ToasterComponent
+    ToasterComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     NgbModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JoditAngularModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],

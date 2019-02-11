@@ -11,9 +11,7 @@
         <article>
           <h2 class="title">{{post.title}}</h2>
           <span>{{post.lastUpdateDate}}</span>
-          <div class="content">
-            <p>{{post.body}}</p>
-          </div>
+          <div [innerHTML]="post.body | safeHtml"></div>
         </article>
       </div>
 
