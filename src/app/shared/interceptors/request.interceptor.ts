@@ -19,30 +19,22 @@ export class RequestInterceptor implements HttpInterceptor {
 
 
     /*
-        Get token from TokenSTorageService and add this token to the authorization header of the HTTP request.
+        Get token from TokenSTorageService and append this token to the authorization header of the HTTP request.
     */
     intercept(req: HttpRequest<any>, next: HttpHandler) {
  
          if(req){
-        
-            console.log("Request intercepted!")
             const token = this.tokenStorageService.getToken();
             // Check if JWT token is present
             if(token != null){
-        
                 if(!this.tokenStorageService.hasValidToken()){
-                    console.log("Token expirou. Fazendo refresh do token.")
+                    //console.log("Token expirou. Fazendo refresh do token.")
                     this.toasterService.info("Unauthorized access. Please, login to continue.");
                     this.route.navigate(['login']);
                 }
-        
                 // Clone HTTP headers and add extra authorization header
-                req = req.clone({ headers: req.headers.set(this.TOKEN_HEADER_KEY, `Bearer ${token}`) });
-                
-            }else{
-                this.toasterService.info("Token null exception.");
+                req = req.clone({ headers: req.headers.set(this.TOKEN_HEADER_KEY, `Bearer ${token}`) });          
             }
-                 
         }
            
         return next.handle(req);
