@@ -29,8 +29,9 @@ import { ToasterComponent } from './toaster/toaster.component'
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { ResponseInterceptor } from './shared/interceptors/response.interceptor';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { JoditAngularModule } from 'jodit-angular';
+import { JoditAngularModule } from 'jodit-angular/jodit-angular';
 import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
+
 
 @NgModule({
   declarations: [
