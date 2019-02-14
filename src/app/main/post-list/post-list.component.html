@@ -1,52 +1,28 @@
-
-<!-- <div class="row">
-    <div class="col-md-12"> -->
-        <!-- Message if there are no notes
-        <h3><p *ngIf="selectedNotebook != null">{{selectedNotebook.name}}</p></h3>
-        <h3><p *ngIf="selectedNotebook == null">All notes</p></h3>
-        <p *ngIf="this.notes.length === 0">There are no notes do display in this notebook</p> -->
-    <!-- </div> -->
-<!-- </div> -->
-<div style="">
-    <div *ngFor="let s of summaries">
-        <div class="card" >
-            <div class="card-body">
-                <div class="post">
-                    <div class="post-title">
-                        <a [routerLink]="[ '/post', s.id ]">{{s.title}}</a>        
-                    </div>
-                    <div class="post-info">
-                        Postado em {{s.date}} por {{s.userName}}
-                    </div>
-                    <div class="in-line">
-                        <img src="/assets/img/image-not-found.png" />   
-                        <div class="post-summary">
-                            <p class="post-head-content">
-                                {{s.summary}} 
-                            </p>
-                            <p class="pull-right"> 
-                                <a class="full-post-link align-bottom" [routerLink]="[ '/post', s.id ]">Full Post</a>
-                            </p>
-                        </div>
-                    </div>
+<div class="deck-container">
+    <div class="card-deck ">
+        <div class="card-columns">
+            <div *ngFor="let s of summaries" class="card">
+                <img class="card-img-top" src="/assets/img/image-not-found.png"  alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
+                    <p class="card-text">{{s.summary}}
+                        <a class="full-post-link" [routerLink]="[ '/post', s.id ]">Full Post</a>
+                    </p>
                 </div>
-
-                <!-- Title -->            
-                <!-- <div>
-                    <input type="text" class="input-label-lg" maxlength="18" 
-                        (change)="updateNote()" style="width: 80%" [(ngModel)]=note.title>
-                    <a class="pull-right text-danger" (click)="deleteNote()">
-                        <i class="fa fa-trash-o"></i>
-                    </a>
-                </div> -->
-                <!-- Text -->
-                <!-- <textarea class="input-label" style="width:100%;" rows="6" (change)="updateNote()" [(ngModel)]=note.text></textarea> -->
-                <!-- Text info: last modification -->
-                <!-- <strong class="text-info" style="font-size:small;">{{note.lastModifiedOn | date:'dd-MM-yyyy HH:mm'}}</strong> -->
+                <div class="card-footer">
+                    <small class="text-muted">Postado em {{s.date}} por {{s.userName}}</small>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+                        
+<!-- Text -->
+<!-- <textarea class="input-label" style="width:100%;" rows="6" (change)="updateNote()" [(ngModel)]=note.text></textarea> -->
+<!-- Text info: last modification -->
+<!-- <strong class="text-info" style="font-size:small;">{{note.lastModifiedOn | date:'dd-MM-yyyy HH:mm'}}</strong> -->
+  
 
 
 
