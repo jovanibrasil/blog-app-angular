@@ -10,8 +10,9 @@
       <div class="col-md-8">
         <article>
           <h2 class="title">{{post.title}}</h2>
-          <span>{{post.lastUpdateDate}}</span>
-          <div style="text-align: justify" [innerHTML]="post.body | safeHtml"></div>
+          <span>Postado em {{post.date | date : "dd-MM-yyyy 'às' HH:mm" }} 
+            e último update em {{post.lastUpdateDate | date : "dd-MM-yyyy 'às' HH:mm" }} </span>
+          <div style="margin-top: 20px; text-align: justify" [innerHTML]="post.body | safeHtml"></div>
         </article>
       </div>
 
