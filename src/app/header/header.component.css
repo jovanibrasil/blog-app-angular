@@ -3,6 +3,10 @@
     /* height: 60px; */
 }
 
+li:hover{
+    cursor: pointer;
+}
+
 /* li a, .vertical-centered {
     color: white;
     display: flex;
