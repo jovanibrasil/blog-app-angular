@@ -11,7 +11,6 @@ import { PostComponent } from './post/post.component';
 import { PostManagementComponent } from './post-management/post-management.component';
 import { BlogManagementComponent } from './blog-management/blog-management.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
@@ -19,7 +18,7 @@ import { SearchComponent } from './right-menu/search/search.component';
 import { SubscribeComponent } from './right-menu/subscribe/subscribe.component';
 import { BestPostListComponent } from './right-menu/best-post-list/best-post-list.component';
 import { UserInfoVbarComponent } from './post/user-info-vbar/user-info-vbar.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostModalComponent } from './post-management/post-modal/post-modal.component';
 import { PostConfigModalComponent } from './post-management/post-config-modal/post-config-modal.component';
@@ -31,6 +30,8 @@ import { ResponseInterceptor } from './shared/interceptors/response.interceptor'
 import { AuthGuard } from './shared/guards/auth.guard';
 import { JoditAngularModule } from 'jodit-angular/';
 import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,6 @@ import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
     PostManagementComponent,
     BlogManagementComponent,
     SigninComponent,
-    SignupComponent,
     AboutComponent,
     ErrorViewComponent,
     SearchComponent,
@@ -65,9 +65,10 @@ import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    JoditAngularModule
+    JoditAngularModule,
+    NgxCaptchaModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+  providers: [Globals, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [PostConfigModalComponent, PostModalComponent]

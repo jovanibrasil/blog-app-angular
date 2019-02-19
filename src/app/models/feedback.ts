@@ -1,4 +1,6 @@
 export interface Feedback {
-    title: string;
+    name: string;
+    email: string;
     content: string;
+    captchaCode: string;
 }

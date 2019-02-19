@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilsService } from '../../shared/services/utils.service';
 import { Feedback } from 'src/app/models/feedback';
+import { ToasterService } from 'src/app/shared/services/toaster.service';
+import { FormGroup } from '@angular/forms';
+import { ReCaptcha2Component } from 'ngx-captcha';
+import { Globals } from 'src/app/globals';
 
 @Component({
   selector: 'app-feedback',
@@ -10,32 +14,60 @@ import { Feedback } from 'src/app/models/feedback';
 })
 export class FeedbackComponent implements OnInit {
 
-  model: Feedback;
+  model: Feedback; 
 
-  constructor(private http: HttpClient, private apiService: UtilsService) { }
+  @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
+
+  key: String = this.globals.RECAPTCHA_KEY;
+  
+  captchaError: boolean;
+  captchaSuccess: boolean;
+
+  constructor(private utilsService: UtilsService, private toastService: ToasterService, private globals: Globals) { }
 
   ngOnInit() {
-    
+    this.initForm();
+  }
+
+  initForm(){
+    this.model = {
+      name: "",
+      email: "",
+      content: "",
+      captchaCode: ""
+    };
+    this.captchaError = false;
+    this.captchaSuccess = false;
   }
 
   sendFeedback(): void {
-    let url = "http://localhost:8080/api/feedback";
-    //alert(this.model.name);
+    // verify recaptcha component status
+    let recapchaValue = this.captchaElem.getResponse();
+    if(!recapchaValue) {
+      this.captchaError = true;
+      return;
+    }
+    this.model.captchaCode = recapchaValue;
 
-    this.apiService.postFeedback(this.model).subscribe(
+    this.utilsService.postFeedback(this.model).subscribe(
       res => {
-        location.reload(); // refresh page
+        this.toastService.success("The message was successfuly sended");
       },
       err => {
-        alert("An error has occurred while sending feedback");
+        alert();
+        this.toastService.error("An error has occurred while sending feedback");
       }
     );
+    this.reloadCaptcha();
   }
 
-}
+  handleSuccess(captchaResponse: string): void {
+    this.captchaSuccess = true;
+    this.captchaError = false;
+  }
 
-export interface FeedbackViewModel{
-  name: string;
-  email: string;
-  feedback: string;
+  reloadCaptcha(): void {
+    this.captchaElem.reloadCaptcha();
+  }
+
 }

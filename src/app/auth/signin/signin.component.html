@@ -27,16 +27,21 @@
             <div class="mb-4 text-danger help-block" *ngIf="password.errors?.required">Password is required</div>
           </div>
         </div>
-
-        <div class="text-center">
-          <button class="btn btn-info my-4" [disabled]="loading">Sign In</button>
-        </div>
-        <!-- Register -->
-        <p class="text-center">Not a member?
-            <a routerLink="/signup">Sign Up</a>
-        </p>
         
-        <app-toaster></app-toaster>
+        <div style="display: flex; align-items: center; flex-direction: column">
+          <div>
+            <ngx-recaptcha2 #captchaElem
+            [siteKey]="key" 
+            [ngModel]="recaptcha"
+            name="captchaElem"
+            (success)="handleSuccess($event)">
+            </ngx-recaptcha2>
+            <div class="invalid-input" *ngIf="captchaError">Captcha is required!</div>
+          </div>
+          <div class="text-center"><button class="btn btn-info my-4" [disabled]="loading">Sign In</button></div>
+          <!-- Messages component -->
+          <app-toaster></app-toaster>
+        </div>
 
       </form>
 

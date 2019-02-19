@@ -43,5 +43,9 @@ export class AuthService {
     saveUser(user: User): Observable<User>{
       return this.http.post<User>(this.SIGNUP_URL, user);
     }
+
+    verifyReCaptcha(){
+      
+    }
     
 }

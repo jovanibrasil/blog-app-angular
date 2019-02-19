@@ -1,46 +1,73 @@
-<div style="background-color: white; border-radius: 5px; padding: 10px; width: 100%">
+<div class="form-container" style="background-color: white; border-radius: 5px; padding: 10px; width: 100%">
   <!-- #field_name is an alias for an element. -->
   <!-- The feedback will be send only if the form is valid. -->
 
-  <form name="form" #f="ngForm" class="feedback-form" (ngSubmit)="f.form.valid && sendFeedback()" novalidate>
-    
+
+  <form ngForm #form="ngForm" class="feedback-form" (ngSubmit)="form.valid && sendFeedback()" novalidate>
+  
     <p class="h4 mb-4 text-center">Give me your feedback</p>
-    
+
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="name">Name</label>
       <input type="text"
-          id="title" class="form-control" name="title"
-          placeholder="Title!" [(ngModel)]="model.title"
-          #title=ngModel [ngClass]="{'is-invalid' : f.submitted && title.invalid}"
-          required/>
-      <div *ngIf="f.submitted && title.invalid" class="invalid-input">
-        <div *ngIf="title.errors?.required" >Field is required!</div>
+      id="name" class="form-control" name="name"
+      placeholder="Your name!" [(ngModel)]="model.name"
+      #name=ngModel [ngClass]="{'is-invalid' : form.submitted && name.invalid}"
+      required/> 
+      <div *ngIf="form.submitted && name.invalid" class="invalid-input">
+        <div *ngIf="name.errors?.required" >Field is required!</div> 
       </div>
     </div>
 
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text"
+      id="email" class="form-control" name="email"
+      placeholder="Your email!" [(ngModel)]="model.email"
+      #email=ngModel [ngClass]="{'is-invalid' : form.submitted && email.invalid}"
+      required email/> 
+      <div *ngIf="form.submitted && email.invalid" class="invalid-input">
+        <div *ngIf="email.errors?.required" >Field is required!</div> 
+        <div *ngIf="email.errors?.email">Email is not valid</div>
+      </div>
+    </div>
+    
     <div class="form-group">
       <label for="content">Feedback</label>
       <textarea type="text"
           id="content" class="form-control" name="content"
           placeholder="Your feedback!" rows="10" [(ngModel)]="model.content"
-          #content="ngModel" [ngClass]="{'is-invalid' : f.submitted && content.invalid}"
+          #content="ngModel" [ngClass]="{'is-invalid' : form.submitted && content.invalid}"
           required minlength="10">
       </textarea>
-      <div *ngIf="f.submitted && content.invalid" class="invalid-input">
+      <div *ngIf="form.submitted && content.invalid" class="invalid-input">
         <div *ngIf="content.errors?.required">Field is required!</div>
         <div *ngIf="content.errors?.minlength">Field is too small! (try 10 characters)</div>
       </div>
-    </div>
+    </div> 
 
-    <button type="submit" class="btn btn-info pull-right" style="margin-bottom: 10px" >
-      <i class="fa fa-envelope-o"></i>
-      <span>Send Feedback</span>
-    </button>
-  
+    <div style="display: flex; flex-direction: row; margin-bottom: 50px">     
+      <!-- Recaptcha component -->
+      <div>
+        <ngx-recaptcha2 #captchaElem
+        [siteKey]="key" 
+        [ngModel]="recaptcha"
+        name="captchaElem"
+        (success)="handleSuccess($event)">
+        </ngx-recaptcha2>
+        <div class="invalid-input" *ngIf="captchaError">Captcha is required!</div>
+      </div>
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-info" style="margin-left: auto; height: 40px;" >
+        <i class="fa fa-envelope-o"></i>
+        <span>Send Feedback</span>
+      </button>      
+    </div>
+    
   </form>
 
 
-  
+
 </div>
 
     
