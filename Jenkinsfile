@@ -15,8 +15,8 @@ pipeline {
                 echo 'Installing dependencies ...'
                 sh 'npm install'
                 echo 'Building ...'
-                sh 'RECAPTCHA_KEY=${RECAPTCHA_KEY} node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng 
-                    build --prod --build-optimizer'
+                sh 'node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng 
+                    build --prod --build-optimizer --configuration=production'
             }
         }
 
