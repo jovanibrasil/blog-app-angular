@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
     this.updateNavigation();
     this.tokenStorageService.getTheBoolean().subscribe(
         value => { 
-            console.log("token storage update")
             this.updateNavigation() 
         }
     );
@@ -32,12 +31,9 @@ export class HeaderComponent implements OnInit {
   updateNavigation(){
     this.authority = null;
     // get authority from using auth service
-    console.log("Updating navigaation component")
     let roles = this.tokenStorageService.getAuthorities();
-    console.log(roles);
     roles.every(role => {
         this.authority = role;
-        console.log(this.authority)
         if(role === 'ROLE_ADMIN'){
             return false
         }

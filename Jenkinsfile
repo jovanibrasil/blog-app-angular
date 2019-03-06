@@ -1,16 +1,22 @@
 pipeline {
     agent { label 'jenkins-slave' }
     
+    environment {
+        RECAPTCHA_KEY = credentials('recaptcha_key');
+    }
+
     stages {
  
         stage("Building project") {
             steps {
                 echo 'Cloning git'
-                git([url: 'https://github.com/jovanibrasil/blog-app.git', branch: 'master', credentialsId: '18a17f19-9870-4bcc-8c7b-75eec38a059a'])
+                git([url: 'https://github.com/jovanibrasil/blog-app.git', branch: 'master',
+                 credentialsId: '18a17f19-9870-4bcc-8c7b-75eec38a059a'])
                 echo 'Installing dependencies ...'
                 sh 'npm install'
                 echo 'Building ...'
-                sh 'node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng build --prod --build-optimizer'
+                sh 'RECAPTCHA_KEY=${RECAPTCHA_KEY} node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng 
+                    build --prod --build-optimizer'
             }
         }
 

@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from '@angular/router';
+import { Injectable } from "@angular/core";''
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JwtResponse } from '../../auth/model/jwt.response';
 import { User } from '../../auth/model/user';
 
-import * as CONS from './vars';
+import { environment } from '../../../environments/environment';
 
 /*
   The AuthService handles authentication operations using HttpClient.
@@ -15,7 +14,7 @@ import * as CONS from './vars';
 })
 export class AuthService {
 
-    private BASE_URL = CONS.AUTH_BASE_URL;
+    private BASE_URL = environment.AUTH_BASE_URL;
     private LOGIN_URL =  `${this.BASE_URL}/auth/login`;
     private LOGOUT_URL =  `${this.BASE_URL}/auth/logout`;
     private LOGON_URL = `${this.BASE_URL}/auth/logon`
@@ -42,10 +41,6 @@ export class AuthService {
 
     saveUser(user: User): Observable<User>{
       return this.http.post<User>(this.SIGNUP_URL, user);
-    }
-
-    verifyReCaptcha(){
-      
     }
     
 }

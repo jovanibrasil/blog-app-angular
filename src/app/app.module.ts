@@ -31,7 +31,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { JoditAngularModule } from 'jodit-angular/';
 import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
 import { NgxCaptchaModule } from 'ngx-captcha';
-import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,7 @@ import { Globals } from './globals';
     JoditAngularModule,
     NgxCaptchaModule
   ],
-  providers: [Globals, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [PostConfigModalComponent, PostModalComponent]

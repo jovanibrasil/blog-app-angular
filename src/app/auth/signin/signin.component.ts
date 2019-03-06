@@ -7,7 +7,7 @@ import { TokenStorageService } from '../../shared/services/token.service';
 import { IToast } from 'src/app/toaster/itoast';
 import { ToasterService } from 'src/app/shared/services/toaster.service';
 import { ReCaptcha2Component } from 'ngx-captcha';
-import { Globals } from 'src/app/globals';
+import { environment } from 'src/environments/environment';
 
 /*
   The LoginComponent contains the login form logic.
@@ -22,16 +22,17 @@ export class SigninComponent implements OnInit {
   model: any = {};
 
   loading: any = null;
+  recaptcha: any;
 
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
 
-  key: String = this.globals.RECAPTCHA_KEY;
+  key: String = environment.RECAPTCHA_KEY;
   
   captchaError: boolean;
   captchaSuccess: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, private tokenStorageService: TokenStorageService,
-     private authService: AuthService, private toasterService: ToasterService, private globals: Globals) { 
+     private authService: AuthService, private toasterService: ToasterService) { 
       if(this.tokenStorageService.hasValidToken()){
         this.router.navigate(['/']);  
       }
@@ -59,7 +60,7 @@ export class SigninComponent implements OnInit {
       res => {
         if(res) {
           this.tokenStorageService.saveToken(res.data.token);
-          console.log(this.parseJwt(res.data.token));
+          //console.log(this.parseJwt(res.data.token));
           this.tokenStorageService.saveUserName(this.parseJwt(res.data.token).sub);
           this.tokenStorageService.saveAuthorities([this.parseJwt(res.data.token).role]);
           this.tokenStorageService.setLoggedIn(true);

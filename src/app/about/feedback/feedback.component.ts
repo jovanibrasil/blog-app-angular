@@ -5,7 +5,7 @@ import { Feedback } from 'src/app/models/feedback';
 import { ToasterService } from 'src/app/shared/services/toaster.service';
 import { FormGroup } from '@angular/forms';
 import { ReCaptcha2Component } from 'ngx-captcha';
-import { Globals } from 'src/app/globals';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-feedback',
@@ -18,12 +18,14 @@ export class FeedbackComponent implements OnInit {
 
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
 
-  key: String = this.globals.RECAPTCHA_KEY;
+  key: String = environment.RECAPTCHA_KEY;
   
+  recaptcha: any;
+
   captchaError: boolean;
   captchaSuccess: boolean;
 
-  constructor(private utilsService: UtilsService, private toastService: ToasterService, private globals: Globals) { }
+  constructor(private utilsService: UtilsService, private toastService: ToasterService) { }
 
   ngOnInit() {
     this.initForm();
