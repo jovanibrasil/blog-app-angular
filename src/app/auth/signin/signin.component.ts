@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
       if(this.tokenStorageService.hasValidToken()){
         this.router.navigate(['/']);  
       }
+      console.log(environment.RECAPTCHA_KEY);
   }
 
   ngOnInit() {}
