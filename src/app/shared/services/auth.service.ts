@@ -27,8 +27,8 @@ export class AuthService {
   
     constructor(private http: HttpClient) { }
   
-    login(username: string, password: string){
-      return this.http.post<JwtResponse>(this.LOGIN_URL, {userName: username, password: password})//.shareReplay();
+    login(data: any){
+      return this.http.post<JwtResponse>(this.LOGIN_URL, data)//.shareReplay();
     }
 
     logout(){

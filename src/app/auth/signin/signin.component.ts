@@ -57,7 +57,13 @@ export class SigninComponent implements OnInit {
     }
     this.model.captchaCode = recapchaValue;
 
-    this.authService.login(this.model.username, this.model.password).subscribe( 
+    let data = {
+      userName: this.model.username, 
+      password: this.model.password,
+      application: "BLOG_APP"
+    }
+
+    this.authService.login(data).subscribe( 
       res => {
         if(res) {
           this.tokenStorageService.saveToken(res.data.token);
