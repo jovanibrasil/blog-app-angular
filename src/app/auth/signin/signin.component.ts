@@ -36,7 +36,6 @@ export class SigninComponent implements OnInit {
       if(this.tokenStorageService.hasValidToken()){
         this.router.navigate(['/']);  
       }
-      console.log(environment.RECAPTCHA_KEY);
   }
 
   ngOnInit() {}
@@ -67,18 +66,17 @@ export class SigninComponent implements OnInit {
       res => {
         if(res) {
           this.tokenStorageService.saveToken(res.data.token);
-          //console.log(this.parseJwt(res.data.token));
           this.tokenStorageService.saveUserName(this.parseJwt(res.data.token).sub);
           this.tokenStorageService.saveAuthorities([this.parseJwt(res.data.token).role]);
           this.tokenStorageService.setLoggedIn(true);
           this.router.navigate(['/post-management']);
           //window.location.reload();
         } else {
-          this.toasterService.error("Authentication error. Invalid username or password!");
+          this.toasterService.error("Authentication error. Check your username and password!");
         }
       },
       error => {
-        this.toasterService.error("Authentication error. Check your user date and your internet connection!");
+        this.toasterService.error("Authentication error. Check your username and password!");
       }
     );   
   }

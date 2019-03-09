@@ -23,7 +23,7 @@ export class PostManagementComponent implements OnInit {
   }
 
   createPost(post: Post){
-    console.log("create post");
+    //console.log("create post");
     post.summary = "Temp Summary"
     this.postService.createPost(post).subscribe(
       res => { 
@@ -37,8 +37,8 @@ export class PostManagementComponent implements OnInit {
   }
 
   updatePost(post: Post){
-    console.log("update post");
-    console.log(post);
+    //console.log("update post");
+    //console.log(post);
     this.postService.updatePost(post).subscribe(
       res => { 
         let index = this.posts.indexOf(post);
@@ -52,7 +52,7 @@ export class PostManagementComponent implements OnInit {
   }
 
   updatePostConfiguration(post: Post){
-    console.log("update post configuration")
+    //console.log("update post configuration")
     // TODO
   }
 
@@ -82,7 +82,7 @@ export class PostManagementComponent implements OnInit {
   }
   
   openPostConfiguration(post: Post){
-    console.log("save post configuration")
+    //console.log("save post configuration")
     this.openFormModal(post, PostConfigModalComponent, "Post Configuration", this.createPost.bind(this));
   }
 

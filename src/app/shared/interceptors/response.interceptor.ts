@@ -23,7 +23,6 @@ export class ResponseInterceptor implements HttpInterceptor {
             When an response with an invalid/expired token is received, the user is
             immediately logged out from th application.
         */
-        console.log("verificando response")
         tap(
             (event: HttpEvent<any>) => { 
                 if(event instanceof HttpResponse) {

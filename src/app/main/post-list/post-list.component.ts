@@ -22,7 +22,6 @@ export class PostListComponent implements OnInit {
     this.postService.getLastPostsSummaries(6).subscribe(
       res => { 
         this.summaries = res.data;
-        console.log(res);
       }, 
       err => {}
     );

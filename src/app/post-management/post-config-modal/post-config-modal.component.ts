@@ -18,7 +18,7 @@ export class PostConfigModalComponent implements OnInit {
   }
 
   submit() {
-    console.log('form has been submitted');
+    //console.log('form has been submitted');
     this.activeModal.close(null);
   }
 

@@ -21,7 +21,6 @@ export class BestPostListComponent implements OnInit {
     this.postService.getBestPostTitleList(10).subscribe(
       res => {
         this.posts = res.data;
-        console.log(res);
       },
       err => {}
     );
