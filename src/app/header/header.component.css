@@ -1,10 +1,18 @@
 .navbar {
-    padding: 15px 10px;
+    padding: 5px 10px;
     /* height: 60px; */
 }
 
 li:hover{
     cursor: pointer;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    color: black;
 }
 
 /* li a, .vertical-centered {

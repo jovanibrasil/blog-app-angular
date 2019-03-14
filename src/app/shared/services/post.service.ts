@@ -63,9 +63,9 @@ export class PostService {
     Get a list of post summaries. The summary object also constains basic 
     post information like id, title, author and date.
   */
-  getLastPostsSummaries(quantity: number): Observable<ResponseWrapper> {
+  getLastPostsSummaries(category: string): Observable<ResponseWrapper> {
     //return this.posts.slice(0, quantity);
-    return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES + quantity);
+    return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES + category);
   }
 
   /*

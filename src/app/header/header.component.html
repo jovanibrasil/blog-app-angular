@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: relative">
 
-  <div class="vertical-centered" style="margin-left: 100px">
+  <div class="vertical-centered" style="margin-left: 20px">
     <a class="navbar-brand text-warning" href="#">
       <fa-icon [icon]="faLaptop" ></fa-icon>
       <span >MyBlog</span>
@@ -15,39 +15,49 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
 
-      <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
 
-          <li class="nav-item active" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a class="nav-link" routerLink="/">Home</a>
-          </li>
-          <li *ngIf="authority === 'ROLE_USER'" class="nav-item" (click)="setActive($event)" 
-            data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a class="nav-link" routerLink="/post-management">Post Management</a>
-          </li>
-          <li *ngIf="authority === 'ADMIN_USER'" class="nav-item" (click)="setActive($event)" 
-            data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a class="nav-link" routerLink="/blog-management">Blog Management</a>
-          </li>
-          <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a class="nav-link" routerLink="/about">About</a>
-          </li>
-          
-        </ul>
-        <ul class="navbar-nav">
-    
-          <li *ngIf="authority" class="nav-item">
-            <a class="nav-link" style="color: white" (click)="logout()">Logout</a>
-          </li>
-    
-          <!-- <li *ngIf="!authority && getLocationPath() != '/signup'" >
-            <a class="nav-link" routerLink="/signup">Signup</a>
-          </li> -->
-    
-          <li *ngIf="!authority" class="nav-item">
-            <a class="nav-link" routerLink="/signin">Signin</a>
-          </li>
-    
-        </ul>
+      <li class="nav-item active" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/', 'java' ]">Java</a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/', 'docker' ]">Docker</a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/', 'angular' ]">Angular</a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/', 'ai' ]">AI</a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/', 'others' ]">Others</a>
+      </li>
+ 
+      <li *ngIf="authority === 'ROLE_USER'" class="nav-item" (click)="setActive($event)" 
+        data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" routerLink="/post-management">Post Management</a>
+      </li>
+      <li *ngIf="authority === 'ADMIN_USER'" class="nav-item" (click)="setActive($event)" 
+        data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" routerLink="/blog-management">Blog Management</a>
+      </li>      
+    </ul>
+
+    <ul class="navbar-nav">
+      <li *ngIf="authority" class="nav-item">
+        <a class="nav-link" style="color: white" (click)="logout()">Logout</a>
+      </li>
+      <!-- <li *ngIf="!authority && getLocationPath() != '/signup'" >
+        <a class="nav-link" routerLink="/signup">Signup</a>
+      </li> -->
+      <li *ngIf="!authority" class="nav-item">
+        <a class="nav-link" routerLink="/signin">Signin</a>
+      </li>
+    </ul>
 
   </div>
+
 </nav>
