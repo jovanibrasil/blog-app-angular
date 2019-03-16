@@ -1,4 +1,5 @@
 <div class="text-center search-container">
-    <input type="text" placeholder="Search.." name="search"/>
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <input type="text" placeholder="Search.." name="search" [(ngModel)]="query"
+        (keyup.enter)="submitQuery()"/>
+    <button (click)="submitQuery()"><i class="fa fa-search"></i></button>
 </div>

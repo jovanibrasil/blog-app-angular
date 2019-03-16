@@ -33,6 +33,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { FilterPipe } from './shared/pipeline/filter.pipe';
 import { polyfill as keyboardEventKeyPolyfill } from 'keyboardevent-key-polyfill';
 import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
+import { NotificationModalComponent } from './notification-modal/notification-modal.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { PostCardGridComponent } from './post-card-grid/post-card-grid.component';
  
 keyboardEventKeyPolyfill();
 
@@ -58,7 +61,10 @@ keyboardEventKeyPolyfill();
     FeedbackComponent,
     ToasterComponent,
     SafeHtmlPipe,
-    FilterPipe
+    FilterPipe,
+    NotificationModalComponent,
+    SearchResultsComponent,
+    PostCardGridComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +81,6 @@ keyboardEventKeyPolyfill();
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [PostConfigModalComponent, PostModalComponent]
+  entryComponents: [PostConfigModalComponent, PostModalComponent, NotificationModalComponent]
 })
 export class AppModule { }

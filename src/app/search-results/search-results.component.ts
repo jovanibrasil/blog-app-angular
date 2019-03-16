@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../shared/services/post.service';
 import { Summary } from '../models/summary';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.css']
 })
-export class MainComponent implements OnInit {
+export class SearchResultsComponent implements OnInit {
 
   summaries: Summary[];
 
@@ -17,14 +17,13 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       //this.getFullPostById(+params.get('id'));
-      let tag = params.get('tag');
-      tag = tag ? tag : "any" ;
-      this.getLastPostsSummaries(tag);
-    })
+      let query = params.get('query');
+      this.getSearchResult(query);
+    });
   }
 
-  getLastPostsSummaries(tag: string){
-    this.postService.getLastPostsSummaries(tag).subscribe(
+  getSearchResult(query: string){
+    this.postService.getSearchResult(query).subscribe(
       res => { 
         this.summaries = res.data;
       }, 

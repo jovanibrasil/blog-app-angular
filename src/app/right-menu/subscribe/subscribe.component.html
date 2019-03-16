@@ -1,7 +1,17 @@
 <div class="text-center subscribe-container">
   <h6>Subscribe to my monthly newsletter</h6>
-  <div class="in-line">
-    <input type="text" placeholder="Your Email.." name="email"/>
-    <button type="submit"><i class="fa fa-envelope"></i></button>
-  </div>
+  
+  <form ngForm #form="ngForm" (ngSubmit)="submit(form.valid)" novalidate>
+    <div class="in-line">
+        <input type="text"
+        id="email" class="form-control" name="email" size="40"
+        placeholder="Your Email.." [(ngModel)]="userEmail"
+        #email=ngModel
+        required email/> 
+        <button type="submit" >
+          <i class="fa fa-envelope-o"></i>
+        </button>
+    </div>
+  </form>
+
 </div>

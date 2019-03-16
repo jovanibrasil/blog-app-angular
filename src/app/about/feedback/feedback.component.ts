@@ -6,6 +6,9 @@ import { ToasterService } from 'src/app/shared/services/toaster.service';
 import { FormGroup } from '@angular/forms';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import { environment } from 'src/environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationModalComponent } from 'src/app/notification-modal/notification-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -25,7 +28,8 @@ export class FeedbackComponent implements OnInit {
   captchaError: boolean;
   captchaSuccess: boolean;
 
-  constructor(private utilsService: UtilsService, private toastService: ToasterService) { }
+  constructor(private utilsService: UtilsService, private modalService: NgbModal,
+     private toastService: ToasterService, private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -53,11 +57,14 @@ export class FeedbackComponent implements OnInit {
 
     this.utilsService.postFeedback(this.model).subscribe(
       res => {
-        this.toastService.success("The message was successfuly sended");
+        this.openNotificationModal("Feedback enviado com sucesso", 
+          "A mensalmente foi recebida e será respondida em breve." , () => {
+            this.router.navigate(['/']);  
+          });
       },
       err => {
-        alert();
-        this.toastService.error("An error has occurred while sending feedback");
+        this.openNotificationModal("Erro ao enviar inscrição", 
+        "Infelizmente ocorreu um erro, tente mais tarde novamente.", null);
       }
     );
     this.reloadCaptcha();
@@ -70,6 +77,19 @@ export class FeedbackComponent implements OnInit {
 
   reloadCaptcha(): void {
     this.captchaElem.reloadCaptcha();
+  }
+
+  openNotificationModal(modalTitle: string, modalContent: string, formCallback: any) {
+    const modalRef = this.modalService.open(NotificationModalComponent,
+       { size: 'sm', backdrop: 'static' });
+    modalRef.componentInstance.modalTitle = modalTitle; 
+    modalRef.componentInstance.modalContent = modalContent;
+    
+    modalRef.result.then((result) => {
+        formCallback();
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
 }

@@ -32,3 +32,7 @@ button {
     border: none;
     cursor: pointer;
 }
+
+.invalid-input {
+    color: red;
+}

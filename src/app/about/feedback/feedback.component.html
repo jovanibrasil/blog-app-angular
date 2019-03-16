@@ -38,7 +38,7 @@
           id="content" class="form-control" name="content"
           placeholder="Your feedback!" rows="10" [(ngModel)]="model.content"
           #content="ngModel" [ngClass]="{'is-invalid' : form.submitted && content.invalid}"
-          required minlength="10">
+          required minlength="10" maxlength="1000">
       </textarea>
       <div *ngIf="form.submitted && content.invalid" class="invalid-input">
         <div *ngIf="content.errors?.required">Field is required!</div>
@@ -63,10 +63,7 @@
         <span>Send Feedback</span>
       </button>      
     </div>
-    
   </form>
-
-
 
 </div>
 

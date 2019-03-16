@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";''
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { JwtResponse } from '../../auth/model/jwt.response';
 import { User } from '../../auth/model/user';
-
 import { environment } from '../../../environments/environment';
 
 /*
@@ -23,6 +23,8 @@ export class AuthService {
     
     private SIGNUP_URL =  `${this.BASE_URL}/auth/signup`;
     
+    private SEND_CAPTCHA = `${this.BASE_URL}/captcha`;
+
     model: any = {};
   
     constructor(private http: HttpClient) { }
@@ -42,5 +44,10 @@ export class AuthService {
     saveUser(user: User): Observable<User>{
       return this.http.post<User>(this.SIGNUP_URL, user);
     }
+
+    postCaptcha(data: any): Observable<any> {
+      return this.http.post(this.SEND_CAPTCHA, data).pipe(map((res:Response) => res.json()));
+    }
+  
     
 }

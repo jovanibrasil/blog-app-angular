@@ -2,34 +2,32 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Feedback } from '../../models/feedback';
-import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment'
+import { JwtResponse } from 'src/app/auth/model/jwt.response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  private BASE_URL = "http://localhost:8081";
+  private BASE_URL = environment.BLOG_BASE_URL;
+
   private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedback`;
   private GET_FEEDBACK_LIST_URL = `${this.BASE_URL}/feedback/list/`;
 
-  private SEND_CAPTCHA = `${this.BASE_URL}/captcha`;
+  private SEND_SUBSCRIPTION = `${this.BASE_URL}/subscription/`
 
   constructor(private http: HttpClient) { }
 
   postFeedback(feedback: Feedback): Observable<Feedback> {
-    //this.posts.push(post);
     return this.http.post<Feedback>(this.SEND_FEEDBACK_URL, feedback);
   }
 
   getFeedbackList(quantity: number): Observable<Feedback[]> {
-    //this.posts.push(post);
     return this.http.get<Feedback[]>(this.GET_FEEDBACK_LIST_URL + quantity);
   }
 
-  postCaptcha(data: any): Observable<any> {
-    return this.http.post(this.SEND_CAPTCHA, data).pipe(map((res:Response) => res.json()));
+  postSubscription(email: String): Observable<JwtResponse> {
+    return this.http.get<JwtResponse>(this.SEND_SUBSCRIPTION + email);
   }
-
-
 }

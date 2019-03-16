@@ -16,7 +16,8 @@ export class PostManagementComponent implements OnInit {
   posts: Post[] = [];
   selectedPost: Post = null;
 
-  constructor(private postService: PostService, private modalService: NgbModal, private toasterService: ToasterService) {}
+  constructor(private postService: PostService, private modalService: NgbModal,
+     private toasterService: ToasterService) {}
 
   ngOnInit() {
     this.getPostsByUserId();

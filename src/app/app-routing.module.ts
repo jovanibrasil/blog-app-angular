@@ -8,12 +8,15 @@ import { BlogManagementComponent } from './blog-management/blog-management.compo
 import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { SearchComponent } from './right-menu/search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
   { path: 'post/:id', component: PostComponent },
   { path: 'posts/:tag', component: MainComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'search/:query', component: SearchResultsComponent },
   { path: 'post-management', component: PostManagementComponent, canActivate: [AuthGuard] },
   { path: 'blog-management', component: BlogManagementComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },

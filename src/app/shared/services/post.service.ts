@@ -27,35 +27,24 @@ export class PostService {
   private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries/`
   private GET_BEST_POSTS_TITLES = `${this.BASE_URL}/posts/top/`
   
+  private SEARCH_POSTS_SUMMARIES = `${this.BASE_URL}/search/`  
+
   private posts: Post[];
 
-  constructor(private http: HttpClient) {
-    //this.setupData();
+  constructor(private http: HttpClient) {}
+
+  getSearchResult(query: string): Observable<ResponseWrapper> {
+    return this.http.get<ResponseWrapper>(this.SEARCH_POSTS_SUMMARIES + query);
   }
-
-  // setupData(){
-    
-  //   this.posts = []
-
-  //   for (let index = 0; index < 10; index++) {
-  //     let userId = index%2;
-  //     this.posts.push({
-  //       id: index, title: "Lorem ipsum " + index, date: new Date(), 
-  //       summary: CONS.summary, body: CONS.content, userId
-  //     })
-  //   }
-  // }
 
   /*
     Get a complete object with the content of the required post.
   */
   getFullPostById(id: number): Observable<ResponseWrapper> {
-    //return this.posts[id];
     return this.http.get<ResponseWrapper>(this.POST_BY_ID_URL + id);
   }
 
   getPostsByUserId(userId: number): Observable<ResponseWrapper> {
-    //return this.posts.filter(p => p.userId == userId)
     return this.http.get<ResponseWrapper>(this.GET_POSTS_BY_USER_URL  +  20 + "/" + userId);
   }
 
@@ -64,7 +53,6 @@ export class PostService {
     post information like id, title, author and date.
   */
   getLastPostsSummaries(tag: string): Observable<ResponseWrapper> {
-    //return this.posts.slice(0, quantity);
     return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES + tag);
   }
 
@@ -72,24 +60,18 @@ export class PostService {
     Get a list of post titles. Each object also contains the post id.
   */  
   getBestPostTitleList(quantity: number): Observable<ResponseWrapper> {
-    //return this.posts.slice(0, quantity);
     return this.http.get<ResponseWrapper>(this.GET_BEST_POSTS_TITLES + quantity);
   }
 
   deletePost(post: Post): Observable<ResponseWrapper> {
-    // let postIndex = this.posts.indexOf(post);
-    // this.posts.splice(postIndex, 1);
     return this.http.delete<ResponseWrapper>(this.DELETE_POST_URL + post.id);
   }
 
   createPost(post: Post): Observable<ResponseWrapper> {
-    //this.posts.push(post);
     return this.http.post<ResponseWrapper>(this.SAVE_POST_URL, post);
   }
 
   updatePost(post: Post): Observable<ResponseWrapper> {
-    // let postIndex = this.posts.indexOf(post);
-    // this.posts[postIndex] = post;
     return this.http.post<ResponseWrapper>(this.UPDATE_POST_URL, post);
   }
 
