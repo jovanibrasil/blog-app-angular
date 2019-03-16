@@ -7,6 +7,6 @@ export interface User {
     // network references
     gitHubUserName: string;
     linkedInUserName: string;
-    googleScholarLink: string;
-    lattesLink: string;
+    googleScholarUrl: string;
+    lattesUrl: string;
 }

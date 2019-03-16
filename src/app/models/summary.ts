@@ -4,4 +4,5 @@ export interface Summary {
     date: Date;
     summary: string;
     userName: string;
+    tags: string[];
 }

@@ -3,16 +3,31 @@
   <div *ngIf="post" class="row" >
      
       <div class="col-md-2" style="border-right: 1px solid #333; ">
-        <app-user-info-vbar userId="{{post.userId}}"></app-user-info-vbar>
+        <app-user-info-vbar [user]="user"></app-user-info-vbar>
       </div>
 
       <!-- Post -->
       <div class="col-md-8">
         <article>
-          <h2 class="title">{{post.title}}</h2>
-          <span>Postado em {{post.date | date : "dd-MM-yyyy 'às' HH:mm" }} 
-            e último update em {{post.lastUpdateDate | date : "dd-MM-yyyy 'às' HH:mm" }} </span>
-          <div style="margin-top: 20px; text-align: justify" [innerHTML]="post.body | safeHtml"></div>
+          
+          <div>
+            <div style="display: inline-block;">
+                <h2 class="title">{{post.title}}</h2>
+            </div>
+            <div style="float: right;">
+                <a *ngFor="let tag of post.tags" [routerLink]="[ '/', tag ]">
+                  #{{tag}} 
+                </a>
+            </div>
+          </div>
+
+          <span>Por {{user.fullName}} em {{post.creationDate | date : "dd-MM-yyyy 'às' HH:mm" }} </span>
+          
+          <!-- Post content -->
+          <div style="margin: 20px 0px; text-align: justify" 
+          [innerHTML]="post.body | safeHtml"></div>
+          
+          <span>Último update em {{post.lastUpdateDate | date : "dd-MM-yyyy 'às' HH:mm" }}</span>
         </article>
       </div>
 

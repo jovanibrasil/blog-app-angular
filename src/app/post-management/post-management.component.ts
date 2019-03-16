@@ -87,7 +87,8 @@ export class PostManagementComponent implements OnInit {
   }
 
   openCreatePostModal(){
-    let post = { id: 0, title: "", date: null, lastUpdateDate: null, summary: "", body: "", userId: 1 };
+    let post = { id: 0, title: "", creationDate: null, lastUpdateDate: null, summary: "", 
+      body: "", userId: 1, tags: [] };
     this.openFormModal(post, PostModalComponent, "Create post", this.createPost.bind(this));
   }
 

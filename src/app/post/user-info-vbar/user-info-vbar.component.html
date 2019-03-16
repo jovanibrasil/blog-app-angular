@@ -1,7 +1,7 @@
  <!-- Left sidebar: post author info -->
- <div style="width: 100%; text-align: center; ">
-          
-  <img class="circular" src="/assets/img/profile-default.png" alt="{{user.fullName}}}" height="170px">
+ <div style="width: 100%; text-align: center; margin-bottom: 40px;">
+  
+  <img class="circular" src="/assets/img/jovanibrasil.jpg" alt="{{user.fullName}}}" height="150px">
 
   <div class="in-line center">
       <a href="https://github.com/{{user.gitHubUserName}}" target="_blank" title="Github">
@@ -10,17 +10,17 @@
       <a href="https://www.linkedin.com/in/{{user.linkedInUserName}}" target="_blank" title="Linkedin">
         <i class="fa fa-linkedin" style="font-size:32px; color: #000;"></i>
       </a>
-      <a href="" target="_blank" title="Google Scholar">
+      <a href="{{user.googleScholarUrl}}" target="_blank" title="Google Scholar">
         <i class="fa fa-graduation-cap" style="font-size:30px; color: #000;"></i>
       </a>
-      <a href="" target="_blank" title="Lattes">
+      <a href="{{user.lattesUrl}}" target="_blank" title="Lattes">
         <img src="/assets/img/lattes-icon.png" height="26px" style="color: #000;"/>
       </a>
   </div>
   
   <div >
-      <i *ngIf="user.phone" class="fa fa-phone"  title="Phone" style="font-size:16px; color: #000;">{{user.phone}}</i><br/>
-      <i class="fa fa-envelope"  title="Email" style="font-size:16px; color: #000;"> {{user.email}} </i>
+    <span style="font-size:16px; color: #000;">{{user.fullName}}</span>
+    <i class="fa fa-envelope"  title="Email" style="font-size:16px; color: #000;"> {{user.email}} </i>
   </div>
 
 </div>

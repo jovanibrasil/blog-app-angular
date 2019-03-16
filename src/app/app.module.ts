@@ -30,6 +30,11 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { JoditAngularModule } from 'jodit-angular/';
 import { SafeHtmlPipe } from './shared/pipeline/html-safe.pipe';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { FilterPipe } from './shared/pipeline/filter.pipe';
+import { polyfill as keyboardEventKeyPolyfill } from 'keyboardevent-key-polyfill';
+import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
+ 
+keyboardEventKeyPolyfill();
 
 @NgModule({
   declarations: [
@@ -52,7 +57,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     PostConfigModalComponent,
     FeedbackComponent,
     ToasterComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     ReactiveFormsModule,
     HttpClientModule,
     JoditAngularModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    TextInputAutocompleteModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }, AuthGuard],

@@ -11,14 +11,25 @@
                       <div *ngFor="let s of summaries" class="card" >
                           <img class="card-img-top" src="/assets/img/image-not-found.png"  alt="Card image cap">
                           <div class="card-body">
-                              <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
-                              <p class="card-text">{{s.summary}}
-                                  <a class="full-post-link" [routerLink]="[ '/post', s.id ]">Full Post</a>
-                              </p>
+
+                            <div>
+                                <div style="display: inline-block;">
+                                    <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
+                                </div>
+                                <div style="float: right;">
+                                    <a *ngFor="let tag of s.tags" [routerLink]="[ '/', tag ]">
+                                        #{{tag}} 
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <p class="card-text">{{s.summary}}
+                                <a class="full-post-link" [routerLink]="[ '/post', s.id ]">Full Post</a>
+                            </p>
                           </div>
                           <div class="card-footer">
                                   
-                              <small class="text-muted">Postado em {{s.date | date : "dd-MM-yyyy 'às' HH:mm" }} por {{s.userName}}</small>
+                              <small class="text-muted">Postado em {{s.creationDate | date : "dd-MM-yyyy 'às' HH:mm" }} por {{s.userName}}</small>
                           </div>
                       </div>
                   </div>

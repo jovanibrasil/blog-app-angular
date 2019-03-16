@@ -21,26 +21,26 @@
         <a class="nav-link" routerLink="/">Home</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/', 'java' ]">Java</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'java' ]">Java</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/', 'docker' ]">Docker</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'docker' ]">Docker</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/', 'angular' ]">Angular</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'angular' ]">Angular</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/', 'ai' ]">AI</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]">AI</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/', 'others' ]">Others</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'others' ]">Others</a>
       </li>
  
-      <li *ngIf="authority === 'ROLE_USER'" class="nav-item" (click)="setActive($event)" 
+      <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
         data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/post-management">Post Management</a>
       </li>
-      <li *ngIf="authority === 'ADMIN_USER'" class="nav-item" (click)="setActive($event)" 
+      <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
         data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/blog-management">Blog Management</a>
       </li>      
