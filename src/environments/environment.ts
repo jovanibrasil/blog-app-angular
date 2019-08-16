@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   RECAPTCHA_KEY:  $ENV.RECAPTCHA_KEY,
-  BLOG_BASE_URL: "http://localhost:8080",
-  AUTH_BASE_URL: 'http://localhost:8083'
+  BLOG_BASE_URL: "http://localhost:8081/blog-api",
+  AUTH_BASE_URL: 'http://localhost:8083/auth-api'
 };  
 
 /*

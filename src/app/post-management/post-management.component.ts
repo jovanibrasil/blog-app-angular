@@ -72,7 +72,10 @@ export class PostManagementComponent implements OnInit {
 
   getPostsByUserId() {
     let userId = 1;
-    this.postService.getPostsByUserId(userId).subscribe(
+    let page = 0;
+    let ord = "lastUpdateDate";
+    let dir = "DESC";
+    this.postService.getPostsByUserId(userId, page, ord, dir).subscribe(
       res => {
         this.posts = res.data;
       },

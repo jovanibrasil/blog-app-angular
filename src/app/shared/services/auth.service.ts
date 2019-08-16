@@ -15,7 +15,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
 
     private BASE_URL = environment.AUTH_BASE_URL;
-    private LOGIN_URL =  `${this.BASE_URL}/auth/login`;
+    private LOGIN_URL =  `${this.BASE_URL}/token/create`;
     private LOGOUT_URL =  `${this.BASE_URL}/auth/logout`;
     private LOGON_URL = `${this.BASE_URL}/auth/logon`
     private GET_AUTHORITY = `${this.BASE_URL}/authorities`;

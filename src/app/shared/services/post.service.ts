@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../../models/post';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, fromEventPattern } from 'rxjs';
 
 import { PostInfo } from '../../models/post-info';
@@ -23,7 +23,7 @@ export class PostService {
 
   public GET_ALL_POSTS_URL = `${this.BASE_URL}/posts/all`;
   
-  private GET_POSTS_BY_USER_URL = `${this.BASE_URL}/posts/list/`;
+  private GET_POSTS_BY_USER_URL = `${this.BASE_URL}/posts/list/byuser/`;
   private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries/`
   private GET_BEST_POSTS_TITLES = `${this.BASE_URL}/posts/top/`
   
@@ -44,23 +44,30 @@ export class PostService {
     return this.http.get<ResponseWrapper>(this.POST_BY_ID_URL + id);
   }
 
-  getPostsByUserId(userId: number): Observable<ResponseWrapper> {
-    return this.http.get<ResponseWrapper>(this.GET_POSTS_BY_USER_URL  +  20 + "/" + userId);
+  getPostsByUserId(userId: number, page: number, ord: string, dir: string): Observable<ResponseWrapper> {
+    let params = new HttpParams();
+    params = params.append('page', <string><unknown>page);
+    params = params.append('ord', ord);
+    params = params.append('dir', dir);
+    return this.http.get<ResponseWrapper>(this.GET_POSTS_BY_USER_URL + userId, { params });
   }
 
   /*
     Get a list of post summaries. The summary object also constains basic 
     post information like id, title, author and date.
   */
-  getLastPostsSummaries(tag: string): Observable<ResponseWrapper> {
-    return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES + tag);
+  getLastPostsSummaries(page: number, cat: string): Observable<ResponseWrapper> {
+    let params = new HttpParams();
+    params = params.append('page', <string><unknown>page);
+    params = params.append('cat', cat);
+    return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES, { params });
   }
 
   /*
     Get a list of post titles. Each object also contains the post id.
   */  
   getBestPostTitleList(quantity: number): Observable<ResponseWrapper> {
-    return this.http.get<ResponseWrapper>(this.GET_BEST_POSTS_TITLES + quantity);
+    return this.http.get<ResponseWrapper>(this.GET_BEST_POSTS_TITLES);
   }
 
   deletePost(post: Post): Observable<ResponseWrapper> {

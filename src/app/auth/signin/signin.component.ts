@@ -47,7 +47,6 @@ export class SigninComponent implements OnInit {
   };
 
   login(){
-
     // verify recaptcha component status
     let recapchaValue = this.captchaElem.getResponse();
     if(!recapchaValue) {

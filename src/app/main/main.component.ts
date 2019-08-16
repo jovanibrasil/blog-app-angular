@@ -18,13 +18,13 @@ export class MainComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       //this.getFullPostById(+params.get('id'));
       let tag = params.get('tag');
-      tag = tag ? tag : "any" ;
+      tag = tag ? tag : "all" ;
       this.getLastPostsSummaries(tag);
     })
   }
 
   getLastPostsSummaries(tag: string){
-    this.postService.getLastPostsSummaries(tag).subscribe(
+    this.postService.getLastPostsSummaries(0, tag).subscribe(
       res => { 
         this.summaries = res.data;
       }, 
