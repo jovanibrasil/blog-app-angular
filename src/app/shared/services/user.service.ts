@@ -10,7 +10,7 @@ import { ResponseWrapper } from '../../models/response-wrapper';
 export class UserService {
 
   private BASE_URL = "http://localhost:8081";
-  private USER_BY_ID_URL = `${this.BASE_URL}/user/`;
+  private USER_BY_ID_URL = `${this.BASE_URL}/users/`;
 
   constructor(private http: HttpClient) {}
 

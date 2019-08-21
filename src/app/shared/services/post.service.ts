@@ -16,14 +16,14 @@ export class PostService {
 
   private BASE_URL = environment.BLOG_BASE_URL;
   
-  private DELETE_POST_URL = `${this.BASE_URL}/posts/delete/`;
-  private SAVE_POST_URL = `${this.BASE_URL}/posts/create`;
-  private UPDATE_POST_URL = `${this.BASE_URL}/posts/update`;
-  private POST_BY_ID_URL = `${this.BASE_URL}/posts/post/`;
+  private DELETE_POST_URL = `${this.BASE_URL}/posts/`;
+  private SAVE_POST_URL = `${this.BASE_URL}/posts`;
+  private UPDATE_POST_URL = `${this.BASE_URL}/posts`;
+  private POST_BY_ID_URL = `${this.BASE_URL}/posts/`;
 
-  public GET_ALL_POSTS_URL = `${this.BASE_URL}/posts/all`;
+  public GET_ALL_POSTS_URL = `${this.BASE_URL}/posts`;
   
-  private GET_POSTS_BY_USER_URL = `${this.BASE_URL}/posts/list/byuser/`;
+  private GET_POSTS_BY_USER_URL = `${this.BASE_URL}/posts/byuser/`;
   private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries/`
   private GET_BEST_POSTS_TITLES = `${this.BASE_URL}/posts/top/`
   

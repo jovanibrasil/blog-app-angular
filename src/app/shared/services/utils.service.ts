@@ -12,10 +12,10 @@ export class UtilsService {
 
   private BASE_URL = environment.BLOG_BASE_URL;
 
-  private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedback`;
-  private GET_FEEDBACK_LIST_URL = `${this.BASE_URL}/feedback/list/`;
+  private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedbacks`;
+  private GET_FEEDBACK_LIST_URL = `${this.BASE_URL}/feedbacks/`;
 
-  private SEND_SUBSCRIPTION = `${this.BASE_URL}/subscription/`
+  private SEND_SUBSCRIPTION = `${this.BASE_URL}/subscriptions/`
 
   constructor(private http: HttpClient) { }
 

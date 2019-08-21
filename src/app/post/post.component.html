@@ -15,7 +15,7 @@
                 <h2 class="title">{{post.title}}</h2>
             </div>
             <div style="float: right;">
-                <a *ngFor="let tag of post.tags" [routerLink]="[ '/', tag ]">
+                <a *ngFor="let tag of post.tags" [routerLink]="[ '/posts/', tag ]">
                   #{{tag}} 
                 </a>
             </div>

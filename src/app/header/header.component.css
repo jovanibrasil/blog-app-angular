@@ -1,6 +1,8 @@
 .navbar {
-    padding: 5px 10px;
+    padding: 5px 20px;
     /* height: 60px; */
+    background-color: brown;
+    color: white;
 }
 
 li:hover{
@@ -13,6 +15,19 @@ li:hover{
 
 .dropdown-item:hover {
     color: black;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: darkgray;
+}
+
+.title-style {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 /* li a, .vertical-centered {

@@ -12,7 +12,7 @@
                             <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
                         </div>
                         <div style="float: right;">
-                            <a *ngFor="let tag of s.tags" [routerLink]="[ '/', tag ]">
+                            <a *ngFor="let tag of s.tags" [routerLink]="[ '/posts/', tag ]">
                                 #{{tag}} 
                             </a>
                         </div>

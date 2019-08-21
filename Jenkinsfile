@@ -10,11 +10,12 @@ pipeline {
         stage("Building project") {
             steps {
                 echo 'Cloning git'
+                sh 'rm blog-app -rf'
                 git([url: 'https://github.com/jovanibrasil/blog-app.git', branch: 'master', credentialsId: '18a17f19-9870-4bcc-8c7b-75eec38a059a'])
                 echo 'Installing dependencies ...'
                 sh 'npm install'
                 echo 'Building ...'
-                sh 'node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng build --prod --build-optimizer --configuration=production'
+                sh 'npm run build --prod --build-optimizer --configuration=production --max_old_space_size=512'
             }
         }
 
@@ -35,8 +36,7 @@ pipeline {
         stage("Remove temporary files"){
             steps {
                 echo 'cleaning ...'
-                echo 'TODO'
-                // echo 'rm ~/workspace/blog-app ~/workspace/blog-app@tmp -rf'
+                sh 'rm ~/workspace/blog-app ~/workspace/blog-app@tmp -rf'
             }
         }
 

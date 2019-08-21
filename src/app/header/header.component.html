@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: relative">
+<nav class="navbar navbar-expand-lg" style="position: relative">
 
-  <div class="vertical-centered" style="margin-left: 20px">
-    <a class="navbar-brand text-warning" href="#">
-      <!-- <fa-icon [icon]="faLaptop" ></fa-icon> -->
+  <!-- <div class="vertical-centered" style="margin-left: 20px">
+    <a class="navbar-brand title-style" href="#">
+       <fa-icon [icon]="faLaptop" ></fa-icon> 
       <span >JOVANI'S BLOG</span>
     </a>
-  </div>
+  </div> -->
 
   <button class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarColor01" aria-expanded="false" aria-label="Toggle navigation"
@@ -30,10 +30,10 @@
         <a class="nav-link" [routerLink]="[ '/posts', 'angular' ]">Angular</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]">AI</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]">IA</a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'others' ]">Others</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'others' ]">Diversos</a>
       </li>
  
       <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
