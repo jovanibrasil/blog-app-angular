@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Cloning git'
                 sh 'rm blog-app -rf'
-                git([url: 'https://github.com/jovanibrasil/blog-app.git', branch: 'master', credentialsId: '18a17f19-9870-4bcc-8c7b-75eec38a059a'])
+                git([url: 'https://github.com/jovanibrasil/blog-app.git', branch: 'master', credentialsId: 'jovanibrasil'])
                 echo 'Installing dependencies ...'
                 sh 'npm install'
                 echo 'Building ...'
