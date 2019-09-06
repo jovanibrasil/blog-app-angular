@@ -24,7 +24,7 @@ export class PostService {
   public GET_ALL_POSTS_URL = `${this.BASE_URL}/posts`;
   
   private GET_POSTS_BY_USER_URL = `${this.BASE_URL}/posts/byuser/`;
-  private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries/`
+  private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries`
   private GET_BEST_POSTS_TITLES = `${this.BASE_URL}/posts/top/`
   
   private SEARCH_POSTS_SUMMARIES = `${this.BASE_URL}/search/`  
@@ -59,7 +59,7 @@ export class PostService {
   getLastPostsSummaries(page: number, cat: string): Observable<ResponseWrapper> {
     let params = new HttpParams();
     params = params.append('page', <string><unknown>page);
-    params = params.append('cat', cat);
+    params = params.append('category', cat);
     return this.http.get<ResponseWrapper>(this.GET_LAST_POSTS_SUMMARIES, { params });
   }
 
