@@ -79,7 +79,7 @@ export class PostService {
   }
 
   updatePost(post: Post): Observable<ResponseWrapper> {
-    return this.http.post<ResponseWrapper>(this.UPDATE_POST_URL, post);
+    return this.http.put<ResponseWrapper>(this.UPDATE_POST_URL, post);
   }
 
   updateConfiguration(post: Post){

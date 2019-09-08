@@ -7,9 +7,9 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 })
 export class TokenStorageService {
 
-    private TOKEN_KEY = 'AuthToken';
-    private USERNAME_KEY = 'AuthUserName';
-    private AUTHORITIES_KEY = 'AuthAuthorities';
+    private TOKEN_KEY = 'BlogAuthToken';
+    private USERNAME_KEY = 'BlogAuthUserName';
+    private AUTHORITIES_KEY = 'BlogAuthAuthorities';
     private loggedInStatus: boolean;
 
     private theBoolean: BehaviorSubject<boolean>;
