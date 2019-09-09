@@ -5,6 +5,10 @@
     color: white;
 }
 
+.fa.fa-navicon {
+    color:white;
+}
+
 li:hover{
     cursor: pointer;
 }
