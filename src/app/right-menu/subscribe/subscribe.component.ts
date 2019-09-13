@@ -33,7 +33,7 @@ export class SubscribeComponent implements OnInit {
           "Para mais informações entre em contato comigo."  , null);
       },
       err => {
-        this.openNotificationModal("Falha ao realizar inscrição", 
+        this.openNotificationModal("Falha ao realizar inscrição.", 
         "Infelizmente ocorreu um erro, tente mais tarde.", null);
       }
     );

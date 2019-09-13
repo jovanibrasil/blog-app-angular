@@ -28,6 +28,7 @@ export class UtilsService {
   }
 
   postSubscription(email: String): Observable<JwtResponse> {
-    return this.http.get<JwtResponse>(this.SEND_SUBSCRIPTION + email);
+    return this.http.post<JwtResponse>(this.SEND_SUBSCRIPTION + email, "");
   }
+
 }

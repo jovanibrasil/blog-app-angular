@@ -1,11 +1,11 @@
 <div class="text-center subscribe-container">
-  <h6>Subscreva a newsletter mensal!</h6>
+  <h6>Receba novidades do blog!</h6>
   
   <form ngForm #form="ngForm" (ngSubmit)="submit(form.valid)" novalidate>
     <div class="in-line">
         <input type="text"
         id="email" class="form-control" name="email" size="40"
-        placeholder="Seu email.." [(ngModel)]="userEmail"
+        placeholder="Informe seu email.." [(ngModel)]="userEmail"
         #email=ngModel
         required email/> 
         <button type="submit" >
