@@ -49,13 +49,13 @@
     </ul>
 
     <ul class="navbar-nav">
-      <li *ngIf="authority" class="nav-item">
+      <li *ngIf="authority" class="nav-item" data-toggle="collapse"  data-target=".navbar-collapse.show">
         <a class="nav-link" style="color: white" (click)="logout()">Logout</a>
       </li>
       <!-- <li *ngIf="!authority && getLocationPath() != '/signup'" >
         <a class="nav-link" routerLink="/signup">Signup</a>
       </li> -->
-      <li *ngIf="!authority" class="nav-item">
+      <li *ngIf="!authority" class="nav-item" data-toggle="collapse"  data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/signin">Signin</a>
       </li>
     </ul>
