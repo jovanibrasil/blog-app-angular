@@ -27,14 +27,14 @@ export class PostService {
   private GET_LAST_POSTS_SUMMARIES = `${this.BASE_URL}/posts/summaries`
   private GET_BEST_POSTS_TITLES = `${this.BASE_URL}/posts/top/`
   
-  private SEARCH_POSTS_SUMMARIES = `${this.BASE_URL}/search/`  
+  private SEARCH_POSTS_SUMMARIES = `${this.BASE_URL}/search`  
 
   private posts: Post[];
 
   constructor(private http: HttpClient) {}
 
   getSearchResult(query: string): Observable<ResponseWrapper> {
-    return this.http.get<ResponseWrapper>(this.SEARCH_POSTS_SUMMARIES + query);
+    return this.http.get<ResponseWrapper>(this.SEARCH_POSTS_SUMMARIES, { params : { filter : query } } );
   }
 
   /*
