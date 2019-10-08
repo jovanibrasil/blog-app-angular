@@ -5,6 +5,6 @@ export interface Post {
     lastUpdateDate: Date;
     summary: string;
     body: string;
-    userId: number;
+    userName: string;
     tags: string[];
 }

@@ -1,7 +1,7 @@
 export interface Summary {
     id: number;
     title: string;
-    date: Date;
+    creationDate: Date;
     summary: string;
     userName: string;
     tags: string[];

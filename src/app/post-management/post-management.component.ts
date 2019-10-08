@@ -5,6 +5,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostConfigModalComponent } from './post-config-modal/post-config-modal.component';
 import { PostModalComponent } from './post-modal/post-modal.component';
 import { ToasterService } from '../shared/services/toaster.service';
+import { TokenStorageService } from '../shared/services/token.service';
 
 @Component({
   selector: 'app-post-management',
@@ -17,7 +18,7 @@ export class PostManagementComponent implements OnInit {
   selectedPost: Post = null;
 
   constructor(private postService: PostService, private modalService: NgbModal,
-     private toasterService: ToasterService) {}
+     private toasterService: ToasterService, private tokenService: TokenStorageService) {}
 
   ngOnInit() {
     this.getPostsByUserId();
@@ -25,7 +26,6 @@ export class PostManagementComponent implements OnInit {
 
   createPost(post: Post){
     //console.log("create post");
-    post.summary = "Temp Summary"
     this.postService.createPost(post).subscribe(
       res => { 
         this.posts.push(res.data);
@@ -71,11 +71,11 @@ export class PostManagementComponent implements OnInit {
   }
 
   getPostsByUserId() {
-    let userId = 1;
+    let userName = this.tokenService.getUserName();
     let page = 0;
     let ord = "lastUpdateDate";
     let dir = "DESC";
-    this.postService.getPostsByUserId(userId, page, ord, dir).subscribe(
+    this.postService.getPostsByUserName(userName, page, ord, dir).subscribe(
       res => {
         this.posts = res.data;
       },
@@ -92,7 +92,7 @@ export class PostManagementComponent implements OnInit {
 
   openCreatePostModal(){
     let post = { id: 0, title: "", creationDate: null, lastUpdateDate: null, summary: "", 
-      body: "", userId: 1, tags: [] };
+      body: "", userName: "", tags: [] };
     this.openFormModal(post, PostModalComponent, "Create post", this.createPost.bind(this));
   }
 
@@ -109,7 +109,7 @@ export class PostManagementComponent implements OnInit {
       
       if(result){
         formCallback(result);
-        //this.createPost(result);
+        //this.createPost(result); 
       }else{
         // TODO Gera mensagem de erro
       }

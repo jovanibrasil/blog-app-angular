@@ -44,12 +44,12 @@ export class PostService {
     return this.http.get<ResponseWrapper>(this.POST_BY_ID_URL + id);
   }
 
-  getPostsByUserId(userId: number, page: number, ord: string, dir: string): Observable<ResponseWrapper> {
+  getPostsByUserName(userName: string, page: number, ord: string, dir: string): Observable<ResponseWrapper> {
     let params = new HttpParams();
     params = params.append('page', <string><unknown>page);
     params = params.append('ord', ord);
     params = params.append('dir', dir);
-    return this.http.get<ResponseWrapper>(this.GET_POSTS_BY_USER_URL + userId, { params });
+    return this.http.get<ResponseWrapper>(this.GET_POSTS_BY_USER_URL + userName, { params });
   }
 
   /*
