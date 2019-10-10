@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/app/models/post';
-import { post } from 'selenium-webdriver/http';
-
 
 @Component({
   selector: 'app-post-modal',
@@ -17,12 +15,41 @@ export class PostModalComponent implements OnInit {
   @Input() modalTitle: string = "";
   @Input() post: Post;
 
+  public imagePath: any; 
+  public bannerUploadMessage: string; // validation error
+
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
     if(this.post.tags.length){
       this.formControlValue = "#" + this.post.tags.join(" #");
     }
+  }
+
+  /**
+   * Event that checks for upload file reference.
+   * 
+   * @param files 
+   */
+  previewBannerImg(files: any) {
+    
+    var mimeType = files[0].type;
+    if(mimeType.match(/image\/*/) == null){
+      this.bannerUploadMessage = "Only images are supported";
+      return;
+    }
+
+    // load file from computer asynchronously
+    const reader = new FileReader();
+    const file = files[0];
+    this.imagePath = files;
+    reader.onload = (event: any) => { // once finished
+      this.post.banner = reader.result; 
+      console.log(reader.result)
+    }
+
+    reader.readAsDataURL(file); // raw binary data format
+    
   }
   
   findChoices(searchText: string) {

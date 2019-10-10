@@ -5,4 +5,5 @@ export interface Summary {
     summary: string;
     userName: string;
     tags: string[];
+    banner: any;
 }
