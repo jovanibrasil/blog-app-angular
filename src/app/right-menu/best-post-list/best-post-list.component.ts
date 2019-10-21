@@ -10,6 +10,7 @@ import { PostInfo } from 'src/app/models/post-info';
 export class BestPostListComponent implements OnInit {
 
   posts: PostInfo[];
+  loading: boolean = true;
 
   constructor(private postService: PostService) {}
 
@@ -21,6 +22,7 @@ export class BestPostListComponent implements OnInit {
     this.postService.getBestPostTitleList(10).subscribe(
       res => {
         this.posts = res.data;
+        this.loading = false;
       },
       err => {}
     );
