@@ -1,39 +1,37 @@
-<div style="padding: 10px 20px">
-  <div class="deck-container">
-      <div class="card-deck ">
-          <div class="row">
-          <div class="card-columns" style="padding: 40px 10px">
-              <div *ngFor="let s of summaries" class="card">
+<div class="deck-container">
+    <div class="card-deck ">
+        <div class="row">
+        <div class="card-columns" style="padding: 0px 10px">
+            <div *ngFor="let s of summaries" class="card">
 
-                  <img class="card-img-top" src={{s.banner}}
-                  *ngIf="s.banner" style="height: 200px;" alt="Card image cap">  
+                <img class="card-img-top" src={{s.banner}}
+                *ngIf="s.banner" style="height: 200px;" alt="Card image cap">  
 
-                  <img class="card-img-top" src="/assets/img/image-not-found.png"  
-                  *ngIf="!s.banner" alt="Card image cap"> 
+                <img class="card-img-top" src="/assets/img/image-not-found.png"  
+                *ngIf="!s.banner" alt="Card image cap"> 
 
-                  <div class="card-body">
+                <div class="card-body">
 
-                    <div>
-                        <div style="display: inline-block;">
-                            <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
-                        </div>
-                        <div style="float: right;">
-                            <a *ngFor="let tag of s.tags" [routerLink]="[ '/posts/', tag ]">
-                                #{{tag}} 
-                            </a>
-                        </div>
+                <div>
+                    <div style="display: inline-block;">
+                        <h5 class="card-title"><a [routerLink]="[ '/post', s.id ]">{{s.title}}</a></h5>
                     </div>
-                    
-                    <p class="card-text">{{s.summary}}
-                        <a class="full-post-link" [routerLink]="[ '/post', s.id ]">Full Post</a>
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                      <small class="text-muted">Postado em {{s.creationDate | date : "dd-MM-yyyy 'às' HH:mm" }} por {{s.userName}}</small>
-                  </div>
-              </div>
-          </div>
-          </div>
-      </div>
-  </div>
+                    <div style="float: right;">
+                        <a *ngFor="let tag of s.tags" [routerLink]="[ '/posts/', tag ]">
+                            #{{tag}} 
+                        </a>
+                    </div>
+                </div>
+                
+                <p class="card-text">{{s.summary}}
+                    <a class="full-post-link" [routerLink]="[ '/post', s.id ]">Full Post</a>
+                </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Postado em {{s.creationDate | date : "dd-MM-yyyy 'às' HH:mm" }} por {{s.userName}}</small>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>

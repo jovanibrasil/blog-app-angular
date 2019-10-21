@@ -1,7 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
-        <app-post-card-grid [summaries]="summaries"></app-post-card-grid>
+        <div class="search-result-info">
+          <p *ngIf="summaries.length == 0">Nenhum resultado foi encontrado!</p>
+          <p *ngIf="summaries.length == 1">Foi encontrado 1 resultado!</p>
+          <p *ngIf="summaries.length > 1">Foram encontrados {{summaries.length}} resultados!</p>
+        </div>
+        <div style="padding: 0px 20px">
+            <app-post-card-grid [summaries]="summaries"></app-post-card-grid>
+        </div>
     </div>
   </div>
 </div>

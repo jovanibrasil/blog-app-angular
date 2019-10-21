@@ -10,7 +10,7 @@ import { Summary } from '../models/summary';
 })
 export class SearchResultsComponent implements OnInit {
 
-  summaries: Summary[];
+  summaries: Summary[] = [];
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
