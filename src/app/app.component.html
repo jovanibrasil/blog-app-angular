@@ -1,7 +1,20 @@
 <div style="display: flex; flex-direction: column; min-height: 100vh;">
   <app-header></app-header>
   <div style="flex: 1; background-color:white; height: 100%;"> 
-    <router-outlet></router-outlet>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-9">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-3" style="padding-left: 10px;">
+           <div style="margin: 10px;">
+              <app-right-menu></app-right-menu>
+          </div> 
+        </div>
+      </div>
+    </div>
+
   </div>
   <app-footer></app-footer>
 </div>
