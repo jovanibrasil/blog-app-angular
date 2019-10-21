@@ -30,7 +30,6 @@ export class MainComponent implements OnInit {
       res => { 
         this.summaries = res.data;
         this.loading = false;
-        console.log("carregou");
       }, 
       err => {}
     );
