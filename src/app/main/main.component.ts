@@ -11,6 +11,7 @@ import { Summary } from '../models/summary';
 export class MainComponent implements OnInit {
 
   summaries: Summary[];
+  loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
@@ -24,9 +25,12 @@ export class MainComponent implements OnInit {
   }
 
   getLastPostsSummaries(tag: string){
+    this.loading = true;
     this.postService.getLastPostsSummaries(0, tag).subscribe(
       res => { 
         this.summaries = res.data;
+        this.loading = false;
+        console.log("carregou");
       }, 
       err => {}
     );
