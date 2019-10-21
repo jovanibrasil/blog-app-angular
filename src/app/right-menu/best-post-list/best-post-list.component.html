@@ -1,5 +1,5 @@
-<div class="text-center best-posts-container" >
-  <div >
+<div class="best-posts-container" >
+  <div class="text-center">
     <h4>Melhores Posts</h4>
   </div>
   <div *ngIf="loading" style="height: 100%;">
@@ -8,10 +8,10 @@
     </div> 
   </div>
   <div>
-    <ul *ngIf="!loading" style="list-style-type:none; padding-left: 0px; " >
-      <li *ngFor="let p of posts" style=" padding: 2px 0px;">
+    <ol *ngIf="!loading">
+      <li *ngFor="let p of posts" >
           <a [routerLink]="['/post', p.id]">{{p.title}}</a>
       </li>
-    </ul> 
-  </div> 
+    </ol>
+  </div>
 </div>

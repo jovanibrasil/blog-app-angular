@@ -1,16 +1,21 @@
 <div class="text-center subscribe-container">
   <h6>Receba novidades do blog!</h6>
   
-  <form ngForm #form="ngForm" (ngSubmit)="submit(form.valid)" novalidate>
+  <form ngForm (ngSubmit)="f.form.valid && submit(form.valid)" #f="ngForm" novalidate>
     <div class="in-line">
         <input type="text"
-        id="email" class="form-control" name="email" size="40"
+        id="email" class="form-control" name="email" 
         placeholder="Informe seu email.." [(ngModel)]="userEmail"
-        #email=ngModel
+        #email=ngModel maxlength="30" size="30"
         required email/> 
-        <button type="submit" >
+        <button type="submit" [disabled]="!f.valid">
           <i class="fa fa-envelope-o"></i>
         </button>
+    </div>
+    <div *ngIf="userEmail != ''">
+      <div *ngIf="email.errors?.required">Digite um email válido</div>
+      <div *ngIf="email.errors?.email">Email com formato inválido</div>
+      <div *ngIf="email.errors?.maxlength">Email pode ter no máximo 30 caracteres</div>
     </div>
   </form>
 

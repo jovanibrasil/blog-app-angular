@@ -1,5 +1,5 @@
 
-.search-container {
+.search-container form {
     display: flex;
     flex-flow: row nowrap;
     background-color: darkgray;

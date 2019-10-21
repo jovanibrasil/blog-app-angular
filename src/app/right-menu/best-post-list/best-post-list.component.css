@@ -1,5 +1,21 @@
 a {
     color: black;
+    margin-left: 5px;
+}
+
+ol {
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    padding: 0px;
+    /* list-style-type:none; */
+}
+
+li {
+    margin: 5px;
+    list-style-position:inside;
+    white-space: nowrap;
 }
 
 .best-posts-container {
@@ -9,5 +25,6 @@ a {
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
 
 

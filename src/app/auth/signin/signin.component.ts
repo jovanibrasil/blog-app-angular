@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit {
   key: String = environment.RECAPTCHA_KEY;
   
   captchaError: boolean;
-  captchaSuccess: boolean;
+  captchaSuccess: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private tokenStorageService: TokenStorageService,
      private authService: AuthService, private toasterService: ToasterService) { 
@@ -71,10 +71,12 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['/post-management']);
           //window.location.reload();
         } else {
+          this.reloadCaptcha();
           this.toasterService.error("Authentication error. Check your username and password!");
         }
       },
       error => {
+        this.reloadCaptcha();
         this.toasterService.error("Authentication error. Check your username and password!");
       }
     );   
@@ -86,6 +88,8 @@ export class SigninComponent implements OnInit {
   }
 
   reloadCaptcha(): void {
+    this.captchaSuccess = false;
+    this.captchaError = false;
     this.captchaElem.reloadCaptcha();
   }
 }
