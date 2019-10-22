@@ -1,7 +1,7 @@
 <div class="text-center subscribe-container">
   <h6>Receba novidades do blog!</h6>
   
-  <form ngForm (ngSubmit)="f.form.valid && submit(form.valid)" #f="ngForm" novalidate>
+  <form ngForm (ngSubmit)="f.valid && submit(f.valid)" #f="ngForm" novalidate>
     <div class="in-line">
         <input type="text"
         id="email" class="form-control" name="email" 
