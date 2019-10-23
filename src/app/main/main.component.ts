@@ -10,7 +10,7 @@ import { Summary } from '../models/summary';
 })
 export class MainComponent implements OnInit {
 
-  summaries: Summary[];
+  summaries: Summary[] = [];
   loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
