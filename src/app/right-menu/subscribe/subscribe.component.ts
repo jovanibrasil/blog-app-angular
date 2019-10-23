@@ -34,7 +34,7 @@ export class SubscribeComponent implements OnInit {
       },
       err => {
         this.openNotificationModal("Falha ao realizar inscrição.", 
-        "Infelizmente ocorreu um erro, tente mais tarde.", null);
+          err.error.errors[0].message, null);
       }
     );
     
