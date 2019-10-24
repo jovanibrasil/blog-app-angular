@@ -11,6 +11,7 @@ import { Summary } from '../models/summary';
 export class SearchResultsComponent implements OnInit {
 
   summaries: Summary[] = [];
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
@@ -23,11 +24,15 @@ export class SearchResultsComponent implements OnInit {
   }
 
   getSearchResult(query: string){
+    this.loading = true;
     this.postService.getSearchResult(query).subscribe(
       res => { 
         this.summaries = res.data;
+        this.loading = false;
       }, 
-      err => {}
+      err => {
+        this.loading = false;
+      }
     );
   }
 
