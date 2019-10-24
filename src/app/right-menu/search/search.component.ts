@@ -8,14 +8,15 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  query: string = ""; 
+  query: string = ''; 
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
   submitQuery(){
-    this.router.navigate(['/search', this.query]); 
+    this.router.navigate(['/search', this.query]);
+    this.query = ''; 
   }
 
 }
