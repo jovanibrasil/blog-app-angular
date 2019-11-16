@@ -19,3 +19,8 @@
 a i {
     margin: 5px 2px;
 }
+
+.img-fluid {
+    max-width: 70%;
+    min-width: 40%;
+}
