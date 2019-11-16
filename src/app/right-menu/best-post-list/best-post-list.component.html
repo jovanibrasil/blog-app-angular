@@ -7,10 +7,12 @@
         <span class="sr-only">Loading...</span>
     </div> 
   </div>
-  <div>
+  <div style="width: 100%;">
     <ol *ngIf="!loading">
       <li *ngFor="let p of posts" >
-          <a [routerLink]="['/post', p.id]">{{p.title}}</a>
+            <div class="text-truncate">
+              <a [routerLink]="['/post', p.id]">{{p.title}}</a>
+            </div>
       </li>
     </ol>
   </div>
