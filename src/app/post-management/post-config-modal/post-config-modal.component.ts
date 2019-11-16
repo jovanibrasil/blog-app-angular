@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder } from '@angular/forms';
 
@@ -13,12 +13,15 @@ export class PostConfigModalComponent implements OnInit {
 
   ngOnInit() { }
 
+  keyupHandlerFunction(any){
+    console.log("keyup");
+  }
+
   closeModal(){
     this.activeModal.close();
   }
 
   submit() {
-    //console.log('form has been submitted');
     this.activeModal.close(null);
   }
 

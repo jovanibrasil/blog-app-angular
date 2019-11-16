@@ -7,5 +7,5 @@ export interface Post {
     body: string;
     userName: string;
     tags: string[];
-    banner: any;
+    bannerUrl: string;
 }

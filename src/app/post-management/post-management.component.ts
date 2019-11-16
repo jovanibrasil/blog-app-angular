@@ -6,6 +6,7 @@ import { PostConfigModalComponent } from './post-config-modal/post-config-modal.
 import { PostModalComponent } from './post-modal/post-modal.component';
 import { ToasterService } from '../shared/services/toaster.service';
 import { TokenStorageService } from '../shared/services/token.service';
+import { PostForm } from '../models/post-form';
 
 @Component({
   selector: 'app-post-management',
@@ -17,16 +18,19 @@ export class PostManagementComponent implements OnInit {
   posts: Post[] = [];
   selectedPost: Post = null;
 
-  constructor(private postService: PostService, private modalService: NgbModal,
-     private toasterService: ToasterService, private tokenService: TokenStorageService) {}
+  constructor(private postService: PostService, 
+              private modalService: NgbModal,
+              private toasterService: ToasterService, 
+              private tokenService: TokenStorageService) {}
 
   ngOnInit() {
     this.getPostsByUserId();
   }
 
-  createPost(post: Post){
+  createPost(postForm: PostForm){
+
     //console.log("create post");
-    this.postService.createPost(post).subscribe(
+    this.postService.updatePost(postForm).subscribe(
       res => { 
         this.posts.push(res.data);
         this.toasterService.success("The post has been created successfully.");
@@ -37,12 +41,12 @@ export class PostManagementComponent implements OnInit {
     );
   }
 
-  updatePost(post: Post){
+  updatePost(postForm: PostForm){
     //console.log("update post");
     //console.log(post);
-    this.postService.updatePost(post).subscribe(
+    this.postService.updatePost(postForm).subscribe(
       res => { 
-        let index = this.posts.indexOf(post);
+        let index = this.posts.indexOf(postForm.post);
         this.posts[index] = res.data; 
         this.toasterService.success("The post has been updated successfully.");
       },
@@ -87,23 +91,35 @@ export class PostManagementComponent implements OnInit {
   
   openPostConfiguration(post: Post){
     //console.log("save post configuration")
-    this.openFormModal(post, PostConfigModalComponent, "Post Configuration", this.createPost.bind(this));
+    let postForm: PostForm = { images: [], post : post };
+    this.openFormModal(postForm, PostConfigModalComponent, "Post Configuration", this.createPost.bind(this));
   }
 
   openCreatePostModal(){
-    let post = { id: 0, title: "", creationDate: null, lastUpdateDate: null, summary: "", 
-      body: "", userName: "", tags: [], banner: null };
-    this.openFormModal(post, PostModalComponent, "Create post", this.createPost.bind(this));
+     // create an empty post
+     this.postService.createEmptyPost().subscribe(
+      res => {
+        console.log("Post create successfuly.");
+        let post = <Post>res.data;
+        post.tags = [];
+        let postForm: PostForm = { images: [], post : post };
+        this.openFormModal(postForm, PostModalComponent, "Create post", this.createPost.bind(this));
+      },
+      err => {
+        console.log("Post cannot be created.");
+      }
+    );
   }
 
   openEditPostModal(post: Post){
-    this.openFormModal(post, PostModalComponent, "Edit post", this.updatePost.bind(this));
+    let postForm: PostForm = { images: [], post : post };
+    this.openFormModal(postForm, PostModalComponent, "Edit post", this.updatePost.bind(this));
   }
 
-  openFormModal(post: Post, component: any, modalTitle: string, formCallback: any) {
+  openFormModal(postForm: PostForm, component: any, modalTitle: string, formCallback: any) {
     const modalRef = this.modalService.open(component, { size: 'xl' as 'lg', backdrop: 'static' });
     modalRef.componentInstance.title = modalTitle; 
-    modalRef.componentInstance.post = post;
+    modalRef.componentInstance.postForm = postForm;
     
     modalRef.result.then((result) => {
       

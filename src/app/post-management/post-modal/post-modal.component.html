@@ -15,18 +15,18 @@
     <div class="container">
       <div class="form-group">
         <label for="title" class="col-form-label">Title:</label>
-        <input type="text" name="title" class="form-control" placeholder="Write the title here..." [(ngModel)]="post.title">
+        <input type="text" name="title" class="form-control" placeholder="Write the title here..." [(ngModel)]="postForm.post.title">
       </div>
       <div class="form-group">
         <label for="summary" class="col-form-label">Summary:</label>
         <textarea name="summary" class="form-control" rows="5"  placeholder="Write the post summary here..." 
-          [(ngModel)]="post.summary"></textarea>
+          [(ngModel)]="postForm.post.summary"></textarea>
       </div>
       <div class="form-group">
         <label for="content" class="col-form-label">Post:</label>
           <!-- [config]="{theme: 'dark'}" -->
           <jodit-editor name="editor" #editor [config]="{uploader: { insertImageAsBase64URI: 'true' }}" 
-            [(ngModel)]="this.post.body"></jodit-editor>
+            [(ngModel)]="postForm.post.body"></jodit-editor>
       </div>
       <div class="form-group">
         <label for="tags" class="col-form-label">Tags:</label>
@@ -53,7 +53,7 @@
         <label>Select the post banner</label>
         <span style="color:red;" *ngIf=bannerUploadMessage>{{bannerUploadMessage}}</span>
         <input #file type="file" accept="image/*" (change)="previewBannerImg(file.files)"/>
-        <img [src]="post.banner" height="200" *ngIf="post.banner">       
+        <img [src]="banner" height="200" *ngIf="banner">       
       </div>
     </div>
   </div>
