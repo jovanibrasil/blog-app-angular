@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class RequestInterceptor implements HttpInterceptor {
 
     private TOKEN_HEADER_KEY = "Authorization";
+    private LOCATE_HEADER_KEY = "Accept-Language";
 
     constructor(private tokenStorageService: TokenStorageService, 
         private toasterService: ToasterService, private route: Router) {}
@@ -27,6 +28,8 @@ export class RequestInterceptor implements HttpInterceptor {
             const token = this.tokenStorageService.getToken();
             // Check if JWT token is present
             if(token != null){
+                let userLang = navigator.language || "en-US";
+                req = req.clone({ headers: req.headers.set(this.LOCATE_HEADER_KEY, userLang) });
                 if(!this.tokenStorageService.hasValidToken()){
                     //console.log("Token expirou. Fazendo refresh do token.")
                     this.toasterService.info("Unauthorized access. Please, login to continue.");
@@ -39,4 +42,4 @@ export class RequestInterceptor implements HttpInterceptor {
            
         return next.handle(req);
     }
-}
+}        
