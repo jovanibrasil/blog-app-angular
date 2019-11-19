@@ -61,7 +61,7 @@ export class SigninComponent implements OnInit {
       application: "BLOG_APP"
     }
 
-    this.authService.login(data).subscribe( 
+    this.authService.login(data, recapchaValue).subscribe( 
       res => {
         if(res) {
           this.tokenStorageService.saveToken(res.data.token);

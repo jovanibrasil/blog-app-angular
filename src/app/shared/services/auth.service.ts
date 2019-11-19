@@ -29,8 +29,9 @@ export class AuthService {
   
     constructor(private http: HttpClient) { }
   
-    login(data: any){
-      return this.http.post<JwtResponse>(this.LOGIN_URL, data)//.shareReplay();
+    login(data: any, recapchaValue: string){
+      return this.http.post<JwtResponse>(this.LOGIN_URL, data,
+        { params : { recaptchaResponseToken : recapchaValue } })//.shareReplay();
     }
 
     logout(){

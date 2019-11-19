@@ -26,10 +26,11 @@ export class RequestInterceptor implements HttpInterceptor {
  
          if(req){
             const token = this.tokenStorageService.getToken();
+            let userLang = navigator.language || "en-US";
+            req = req.clone({ headers: req.headers.set(this.LOCATE_HEADER_KEY, userLang) });
+                
             // Check if JWT token is present
             if(token != null){
-                let userLang = navigator.language || "en-US";
-                req = req.clone({ headers: req.headers.set(this.LOCATE_HEADER_KEY, userLang) });
                 if(!this.tokenStorageService.hasValidToken()){
                     //console.log("Token expirou. Fazendo refresh do token.")
                     this.toasterService.info("Unauthorized access. Please, login to continue.");
