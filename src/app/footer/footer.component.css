@@ -10,3 +10,7 @@ a {
 .footer-copyright {
     background-color: rgb(17, 16, 16);
 }
+
+.nav-link {
+    padding: 0px;
+}
