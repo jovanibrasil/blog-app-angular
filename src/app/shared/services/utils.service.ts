@@ -19,8 +19,9 @@ export class UtilsService {
 
   constructor(private http: HttpClient) { }
 
-  postFeedback(feedback: Feedback): Observable<Feedback> {
-    return this.http.post<Feedback>(this.SEND_FEEDBACK_URL, feedback);
+  postFeedback(feedback: Feedback, recapchaValue: string): Observable<Feedback> {
+    return this.http.post<Feedback>(this.SEND_FEEDBACK_URL, feedback, 
+      { params : { recapchaValue } });
   }
 
   getFeedbackList(quantity: number): Observable<Feedback[]> {

@@ -37,10 +37,9 @@ export class FeedbackComponent implements OnInit {
 
   initForm(){
     this.model = {
-      name: "",
+      userName: "",
       email: "",
-      content: "",
-      captchaCode: ""
+      content: ""
     };
     this.captchaError = false;
     this.captchaSuccess = false;
@@ -53,17 +52,16 @@ export class FeedbackComponent implements OnInit {
       this.captchaError = true;
       return;
     }
-    this.model.captchaCode = recapchaValue;
 
-    this.utilsService.postFeedback(this.model).subscribe(
+    this.utilsService.postFeedback(this.model, recapchaValue).subscribe(
       res => {
         this.openNotificationModal("Feedback enviado com sucesso", 
-          "A mensalmente foi recebida e será respondida em breve." , () => {
+          "O feedback foi recebido e será respondido em breve." , () => {
             this.router.navigate(['/']);  
           });
       },
       err => {
-        this.openNotificationModal("Erro ao enviar inscrição", 
+        this.openNotificationModal("Erro ao enviar feedback", 
         "Infelizmente ocorreu um erro, tente mais tarde novamente.", null);
       }
     );
