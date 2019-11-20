@@ -6,7 +6,7 @@
             </div>  
         </div>
     </div>
-    <div>
+    <div style="margin-top: 25px;">
         <app-post-card-grid *ngIf="summaries.length > 0 && !loading" [summaries]="summaries"></app-post-card-grid>
         <div *ngIf="summaries.length == 0 && !loading" class="search-result-info">
             <p>Desculpe, nenhum post foi encontrado para esta categoria!</p>
