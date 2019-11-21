@@ -28,7 +28,7 @@ pipeline {
         stage("Deploy project"){
             steps {
                 echo 'deploying the project ...'
-                sh 'rm /var/www/blog/* -rf'
+                sh 'rm /var/www/blog/*.* -rf'
                 sh 'cp ~/workspace/blog-app/dist/blog-app/* /var/www/blog/ -r'
             }
         }
