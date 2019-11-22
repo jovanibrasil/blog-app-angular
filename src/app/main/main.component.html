@@ -11,5 +11,15 @@
         <div *ngIf="summaries.length == 0 && !loading" class="search-result-info">
             <p>Desculpe, nenhum post foi encontrado para esta categoria!</p>
         </div>
+        <nav *ngIf="count > 1" aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li [ngClass]="p==0 ? 'page-item disabled' : 'page-item'">
+                <a class="page-link" (click)="previousPage()" href="#" tabindex="-1">Anterior</a>
+              </li>            
+              <li [ngClass]="p==count-1 ? 'page-item disabled' : 'page-item'">
+                <a class="page-link" (click)="nextPage()" href="#">Próxima</a>
+              </li>
+            </ul>
+          </nav>
     </div>
 </div>
