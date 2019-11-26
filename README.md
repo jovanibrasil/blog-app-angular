@@ -1,4 +1,4 @@
-[![Build Status](http://13.58.51.172:8085/buildStatus/icon?job=blog-app)](http://13.58.51.172:8085/job/blog-app/)
+[![Build Status](http://jovanibrasil.com:8085/buildStatus/icon?job=blog-app)](http://13.58.51.172:8085/job/blog-app/)
 
 # APP Web para um blog pessoal
 
