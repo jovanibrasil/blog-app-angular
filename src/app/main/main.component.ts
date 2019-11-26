@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { PostService } from '../shared/services/post.service';
 import { Summary } from '../models/summary';
+import { Page } from '../models/page';
 
 @Component({
   selector: 'app-main',
@@ -16,26 +17,26 @@ export class MainComponent implements OnInit {
   // Pagination parameters
   p: number = 1;
   count: number = 1; // number of pages
-
-  i: number = 0; // pagination index
+  tag: string = 'all';
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       let tag = params.get('tag');
-      tag = tag ? tag : "all" ;
-      this.getLastPostsSummaries(tag, 0);
+      this.tag = tag ? tag : 'all';
+      this.getLastPostsSummaries(0);
     })
   }
 
-  getLastPostsSummaries(tag: string, page: number){
+  getLastPostsSummaries(page: number){
     this.loading = true;
-    this.postService.getLastPostsSummaries(page, tag).subscribe(
-      res => { 
-        this.summaries = res.data.summaries;
+    this.postService.getLastPostsSummaries(page, this.tag).subscribe(
+      res => {
+        let page = <Page> res.data;
+        this.summaries = page.content;
         this.loading = false;
-        this.count = res.data.pages;
+        this.count = page.totalPages;
       }, 
       err => {}
     );
@@ -44,17 +45,16 @@ export class MainComponent implements OnInit {
 
 
   nextPage(){
-    console.log("i="+this.i);
     if(this.p+1 <= this.count){
       this.p++;
-      this.getLastPostsSummaries("all", this.p);
+      this.getLastPostsSummaries(this.p);
     }
   }
 
   previousPage(){
     if(this.p > 0){
       this.p--;
-      this.getLastPostsSummaries("all", this.p);
+      this.getLastPostsSummaries(this.p);
     }
   }
 
