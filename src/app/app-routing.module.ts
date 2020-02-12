@@ -8,7 +8,7 @@ import { BlogManagementComponent } from './blog-management/blog-management.compo
 import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { SearchComponent } from './right-menu/search/search.component';
+import { SearchComponent } from './header/search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 
 const routes: Routes = [

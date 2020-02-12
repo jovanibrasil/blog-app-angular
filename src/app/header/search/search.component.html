@@ -1,0 +1,9 @@
+<div class="align-items-center">
+    <div class="container text-center search-container">
+        <form ngForm (ngSubmit)="f.form.valid && submitQuery()" #f="ngForm" novalidate>
+            <input type="text" class="form-control" placeholder="Digite sua busca.." name="search" [(ngModel)]="query"
+            (keyup.enter)="submitQuery()" minlength="1" maxlength="20" size="20" required/>
+            <button type="submit" [disabled]="!f.valid"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
