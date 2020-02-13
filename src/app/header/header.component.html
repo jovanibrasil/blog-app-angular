@@ -18,33 +18,33 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item active" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/"><h4>Home</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'java' ]">Java</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'java' ]"><h4>Java</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'docker' ]">Docker</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'docker' ]"><h4>Docker</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'angular' ]">Angular</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'angular' ]"><h4>Angular</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]">IA</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]"><h4>IA</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'security' ]">Segurança</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'security' ]"><h4>Segurança</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'others' ]">Diversos</a>
+        <a class="nav-link" [routerLink]="[ '/posts', 'others' ]"><h4>Diversos</h4></a>
       </li>
       <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
         data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" routerLink="/post-management">Post Management</a>
+        <a class="nav-link" routerLink="/post-management"><h4>Post Management</h4></a>
       </li>
       <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
         data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" routerLink="/blog-management">Blog Management</a>
+        <a class="nav-link" routerLink="/blog-management"><h4>Blog Management</h4></a>
       </li>      
     </ul>
     

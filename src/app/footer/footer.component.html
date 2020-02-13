@@ -4,22 +4,24 @@
 
     <div class="row">
 
-      <div class="col-md-6 mt-md-0 mt-3">
+      <div class="col-md-4 mt-md-0 mt-3">
         <h5>Blog Pessoal</h5>
         <p>Blog em construção. Por favor, se você tiver alguma sugestão, me envie um email.</p>
-
-      </div>
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <div class="col-md-3 mb-md-0 mb-3">
-        <h5>Outros Projetos</h5>
-        <a href="https://notes.jovanibrasil.com/">Notes</a>
-      </div>
-
-      <div class="col-md-3 mb-md-0 mb-3">
-        <h5><a class="nav-link" routerLink="/about">Sobre</a></h5>
         <p><fa-icon class="mr3" [icon]="faEnvelope" ></fa-icon>jovanibrasil@gmail.com</p>
+      </div>
+
+      <!-- <hr class="clearfix w-100 d-md-none pb-3"> -->
+
+      <div class="col-md-4 mb-md-0 mb-3">
+        <!-- <h5><a class="nav-link" routerLink="/about">Sobre</a></h5> -->
+        <app-subscribe></app-subscribe>
+      </div>
+
+      <div class="col-md-4 mb-md-0 mb-3">
+        <div>
+            <h5>Outros Projetos</h5>
+            <a href="https://notes.jovanibrasil.com/">Notes</a>
+        </div>
       </div>
 
     </div>
