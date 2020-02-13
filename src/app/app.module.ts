@@ -14,7 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { ErrorViewComponent } from './error-view/error-view.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
 import { SearchComponent } from './header/search/search.component';
-import { SubscribeComponent } from './right-menu/subscribe/subscribe.component';
+import { SubscribeComponent } from './footer/subscribe/subscribe.component';
 import { BestPostListComponent } from './right-menu/best-post-list/best-post-list.component';
 import { UserInfoVbarComponent } from './post/user-info-vbar/user-info-vbar.component';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
