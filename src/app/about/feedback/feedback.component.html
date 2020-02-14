@@ -3,18 +3,18 @@
   <!-- The feedback will be send only if the form is valid. -->
   <form ngForm #form="ngForm" class="feedback-form" (ngSubmit)="form.valid && sendFeedback()" novalidate>
   
-    <p class="h4 mb-4 text-center">Give me your feedback</p>
+    <p class="h4 mb-4 text-center">Deixe seu feedback</p>
 
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">Nome</label>
       <input type="text"
       id="name" class="form-control" name="name"
       placeholder="Your name!" [(ngModel)]="model.userName"
       #name=ngModel [ngClass]="{'is-invalid' : form.submitted && name.invalid}"
       minlength="2" maxlength="40" required/> 
       <div *ngIf="form.submitted && name.invalid" class="invalid-input">
-        <div *ngIf="name.errors?.required" >Field is required!</div> 
-        <div *ngIf="content.errors?.minlength">Username must contains between 2 and 40 characters</div>
+        <div *ngIf="name.errors?.required" >Campo obrigatório!</div> 
+        <div *ngIf="content.errors?.minlength">Nome de usuário deve ter entre 2 e 40 caracteres.</div>
       </div>
     </div>
 
@@ -26,8 +26,8 @@
       #email=ngModel [ngClass]="{'is-invalid' : form.submitted && email.invalid}"
       maxlength="40" required email/> 
       <div *ngIf="form.submitted && email.invalid" class="invalid-input">
-        <div *ngIf="email.errors?.required" >Field is required!</div> 
-        <div *ngIf="email.errors?.email">Email is not valid</div>
+        <div *ngIf="email.errors?.required" >Campo obrigatório!</div> 
+        <div *ngIf="email.errors?.email">Email não é válido</div>
       </div>
     </div>
     
@@ -40,8 +40,8 @@
           required minlength="10" maxlength="255">
       </textarea>
       <div *ngIf="form.submitted && content.invalid" class="invalid-input">
-        <div *ngIf="content.errors?.required">Field is required!</div>
-        <div *ngIf="content.errors?.minlength">Field is too small! (try 10 characters)</div>
+        <div *ngIf="content.errors?.required">Campo obrigatório!</div>
+        <div *ngIf="content.errors?.minlength">Muito pequeno! (necessário ao menos 10 caracteres)</div>
       </div>
     </div> 
 

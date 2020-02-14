@@ -36,7 +36,16 @@
         <a class="nav-link" [routerLink]="[ '/posts', 'security' ]"><h4>Segurança</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/posts', 'science' ]"><h4>Ciência</h4></a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" [routerLink]="[ '/posts', 'computing' ]"><h4>Computação</h4></a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" [routerLink]="[ '/posts', 'others' ]"><h4>Diversos</h4></a>
+      </li>
+      <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a class="nav-link" routerLink="/about"><h4>Sobre</h4></a>
       </li>
       <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
         data-toggle="collapse" data-target=".navbar-collapse.show">
