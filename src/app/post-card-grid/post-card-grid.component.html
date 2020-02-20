@@ -1,9 +1,11 @@
 <div class="card-columns">
     <div *ngFor="let s of summaries" class="card">
 
-        <img class="card-img-top"
+        <a [routerLink]="[ '/post', s.id ]">
+            <img class="card-img-top"
             src="{{s.bannerUrl}}"
             alt="Card image cap"/>
+        </a>
 
         <div class="card-body">
 
