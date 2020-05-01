@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'posts/:tag', component: MainComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'search/:query', component: SearchResultsComponent },
-  { path: 'post-management', component: PostManagementComponent, canActivate: [AuthGuard] },
+  { path: 'post-management', component: PostManagementComponent }, //, canActivate: [AuthGuard] },
   { path: 'blog-management', component: BlogManagementComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: '**', component: ErrorViewComponent }

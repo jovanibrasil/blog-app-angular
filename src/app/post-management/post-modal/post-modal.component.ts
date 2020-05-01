@@ -26,15 +26,17 @@ export class PostModalComponent implements OnInit {
     if(this.postForm.post.tags.length){
       this.formControlValue = "#" + this.postForm.post.tags.join(" #");
     }
-
-    let bannerUrl = this.postForm.post.bannerUrl;
+    let bannerUrl = "http://localhost:8081/api/images/" + this.postForm.post.bannerId;//this.postForm.post.bannerUrl;
+    console.log(bannerUrl)
     if(bannerUrl !== null && bannerUrl !== ''){
-      this.postService.getImage(this.postForm.post.bannerUrl).subscribe(
+      this.postService.getImage(bannerUrl).subscribe(
         res => {
           console.log(res);
           this.previewBannerImg([res]);
         },
-        err => {}
+        err => {
+          console.log("Error loading banner" + err);
+        }
       );
     }
   }
@@ -139,7 +141,8 @@ export class PostModalComponent implements OnInit {
       console.log("Error. At least one tag is necessary.")
     }else{
       this.postForm.post.tags = tagList;
-      this.processData();
+      //this.processData();
+      console.log(this.postForm);
       this.activeModal.close(this.postForm);
     }
   }

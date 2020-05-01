@@ -1,4 +1,5 @@
 export interface Post {
+  bannerId: string;
     id: number;
     title: string;
     creationDate: Date;

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/user';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ResponseWrapper } from '../../models/response-wrapper';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(userId: number): Observable<ResponseWrapper> {
-    //return this.users[userId];
-    return this.http.get<ResponseWrapper>(this.USER_BY_ID_URL + userId);
+  getUser(userId: number): Observable<User> {
+    return this.http.get<User>(this.USER_BY_ID_URL + userId);
   }
 
 }

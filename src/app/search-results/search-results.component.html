@@ -7,7 +7,7 @@
           <p *ngIf="summaries.length > 1">Foram encontrados {{summaries.length}} resultados!</p>
         </div>
         <div style="padding: 0px 20px">
-            <app-post-card-grid [summaries]="summaries"></app-post-card-grid>
+            <app-post-card-grid [page]="page"></app-post-card-grid>
         </div>
        </div>
        <div *ngIf="loading" class="row" style="position: absolute;display: block;top: 50%;left: 50%;">

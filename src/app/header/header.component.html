@@ -29,7 +29,7 @@
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/about"><h4>Sobre</h4></a>
       </li>
-      <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)" 
+      <li *ngIf="authority === 'ROLE_ADMIN'" class="nav-item" (click)="setActive($event)"
         data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/post-management"><h4>Post Management</h4></a>
       </li>

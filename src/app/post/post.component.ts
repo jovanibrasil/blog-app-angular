@@ -36,8 +36,8 @@ export class PostComponent implements OnInit {
 
   getFullPostById(id: number){
     this.postService.getFullPostById(id).subscribe(
-      res => { 
-        this.post = res.data;
+      post => { 
+        this.post = post;
         this.post.tags.forEach(tag => {
             this.tags += '#' + tag + " ";
         });

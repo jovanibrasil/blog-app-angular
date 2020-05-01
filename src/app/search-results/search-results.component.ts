@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../shared/services/post.service';
 import { Summary } from '../models/summary';
+import { Page } from '../models/page';
 
 @Component({
   selector: 'app-search-results',
@@ -12,6 +13,7 @@ export class SearchResultsComponent {
 
   summaries: Summary[] = [];
   loading: boolean = false;
+  page: Page;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
@@ -25,8 +27,9 @@ export class SearchResultsComponent {
   getSearchResult(query: string){
     this.loading = true;
     this.postService.getSearchResult(query).subscribe(
-      res => { 
-        this.summaries = res.data;
+      page => { 
+        this.page = page;
+        this.summaries = page.content as Summary[];
         this.loading = false;
       }, 
       err => {

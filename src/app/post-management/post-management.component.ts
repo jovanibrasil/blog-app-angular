@@ -17,6 +17,7 @@ export class PostManagementComponent implements OnInit {
 
   posts: Post[] = [];
   selectedPost: Post = null;
+  pageConfig = { itemsPerPage: 0, currentPage: 0, totalItems:0 };
 
   constructor(private postService: PostService, 
               private modalService: NgbModal,
@@ -24,15 +25,15 @@ export class PostManagementComponent implements OnInit {
               private tokenService: TokenStorageService) {}
 
   ngOnInit() {
-    this.getPostsByUserId();
+    this.getPostsByUserId(0);
   }
 
   createPost(postForm: PostForm){
 
-    //console.log("create post");
-    this.postService.updatePost(postForm).subscribe(
-      res => { 
-        this.posts.push(res.data);
+    console.log("create post");
+    this.postService.createPost(postForm).subscribe(
+      post => { 
+        this.posts.push(postForm.post);
         this.toasterService.success("The post has been created successfully.");
       },
       err => {
@@ -42,12 +43,12 @@ export class PostManagementComponent implements OnInit {
   }
 
   updatePost(postForm: PostForm){
-    //console.log("update post");
+    console.log("update post");
     //console.log(post);
     this.postService.updatePost(postForm).subscribe(
-      res => { 
+      post => { 
         let index = this.posts.indexOf(postForm.post);
-        this.posts[index] = res.data; 
+        this.posts[index] = post; 
         this.toasterService.success("The post has been updated successfully.");
       },
       err => {
@@ -63,7 +64,7 @@ export class PostManagementComponent implements OnInit {
 
   deletePost(post: Post){
     this.postService.deletePost(post).subscribe(
-      res => {
+      () => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
         this.toasterService.success("The post has been deleted successfully.");
@@ -74,14 +75,20 @@ export class PostManagementComponent implements OnInit {
     );
   }
 
-  getPostsByUserId() {
-    let userName = this.tokenService.getUserName();
-    let page = 0;
+  getPostsByUserId(pageNumber: number) {
+    let userName = "jovanibrasil"//this.tokenService.getUserName();
     let ord = "lastUpdateDate";
     let dir = "DESC";
-    this.postService.getPostsByUserName(userName, page, ord, dir).subscribe(
-      res => {
-        this.posts = res.data;
+    this.postService.getPostsByUserName(userName, pageNumber, ord, dir).subscribe(
+      page => {
+        this.posts = page.content as Post[];
+
+        this.pageConfig = { 
+          itemsPerPage: page.size, 
+          currentPage: page.number + 1, 
+          totalItems: page.totalElements 
+        };
+
       },
       err => {
         this.toasterService.error("It was not possible to get the post.");
@@ -96,19 +103,20 @@ export class PostManagementComponent implements OnInit {
   }
 
   openCreatePostModal(){
-     // create an empty post
-     this.postService.createEmptyPost().subscribe(
-      res => {
-        console.log("Post create successfuly.");
-        let post = <Post>res.data;
-        post.tags = [];
-        let postForm: PostForm = { images: [], post : post };
-        this.openFormModal(postForm, PostModalComponent, "Create post", this.createPost.bind(this));
-      },
-      err => {
-        console.log("Post cannot be created.");
-      }
-    );
+    console.log("Openning post creation modal.");
+    let postForm: PostForm = { images: [], post : {
+      id: 0,
+      title: "",
+      creationDate: null,
+      lastUpdateDate: null,
+      summary: "",
+      body: "",
+      userName: "",
+      tags: [],
+      bannerUrl: "",
+      bannerId: "1"
+    } };
+    this.openFormModal(postForm, PostModalComponent, "Create post", this.createPost.bind(this));
   }
 
   openEditPostModal(post: Post){
@@ -117,7 +125,7 @@ export class PostManagementComponent implements OnInit {
   }
 
   openFormModal(postForm: PostForm, component: any, modalTitle: string, formCallback: any) {
-    const modalRef = this.modalService.open(component, { size: 'xl' as 'lg', backdrop: 'static' });
+    const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.title = modalTitle; 
     modalRef.componentInstance.postForm = postForm;
     
@@ -133,6 +141,10 @@ export class PostManagementComponent implements OnInit {
     }).catch((error) => {
       console.log(error);
     });
+  }
+
+  pageChanged(nextPageNumber: number){
+    this.getPostsByUserId(nextPageNumber - 1)
   }
 
 }

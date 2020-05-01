@@ -20,8 +20,8 @@ export class BestPostListComponent implements OnInit {
 
   getBestPostTitleList(){
     this.postService.getBestPostTitleList(10).subscribe(
-      res => {
-        this.posts = res.data;
+      page => {
+        this.posts = page.content;
         this.loading = false;
       },
       err => {}

@@ -11,12 +11,9 @@ import { Page } from '../models/page';
 })
 export class MainComponent implements OnInit {
 
-  summaries: Summary[] = [];
+  page: Page;
+  content = [];
   loading: boolean = true;
-
-  // Pagination parameters
-  p: number = 1;
-  count: number = 1; // number of pages
   tag: string = 'all';
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
@@ -32,30 +29,17 @@ export class MainComponent implements OnInit {
   getLastPostsSummaries(page: number){
     this.loading = true;
     this.postService.getLastPostsSummaries(page, this.tag).subscribe(
-      res => {
-        let page = <Page> res.data;
-        this.summaries = page.content;
+      page => {
+        this.page = page;
+        this.content = page.content;
         this.loading = false;
-        this.count = page.totalPages;
       }, 
       err => {}
     );
-    this.p = page;
   }
 
-
-  nextPage(){
-    if(this.p+1 <= this.count){
-      this.p++;
-      this.getLastPostsSummaries(this.p);
-    }
-  }
-
-  previousPage(){
-    if(this.p > 0){
-      this.p--;
-      this.getLastPostsSummaries(this.p);
-    }
+  pageChanged(event: any){
+    this.getLastPostsSummaries(event-1);
   }
 
 }

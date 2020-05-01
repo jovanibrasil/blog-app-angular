@@ -36,7 +36,8 @@ import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
 import { NotificationModalComponent } from './notification-modal/notification-modal.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PostCardGridComponent } from './post-card-grid/post-card-grid.component';
- 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 keyboardEventKeyPolyfill();
 
 @NgModule({
@@ -76,6 +77,7 @@ keyboardEventKeyPolyfill();
     HttpClientModule,
     JoditAngularModule,
     NgxCaptchaModule,
+    NgxPaginationModule,
     TextInputAutocompleteModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
