@@ -15,16 +15,16 @@
         <a class="nav-link" routerLink="/"><h4>Home</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'java' ]"><h4>Java</h4></a>
+        <a class="nav-link" [routerLink]="[ '/posts' ]" [queryParams]="{tag: 'java'}"><h4>Java</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'docker' ]"><h4>Docker</h4></a>
+        <a class="nav-link" [routerLink]="[ '/posts' ]" [queryParams]="{tag: 'docker'}"><h4>Docker</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'angular' ]"><h4>Angular</h4></a>
+        <a class="nav-link" [routerLink]="[ '/posts' ]" [queryParams]="{tag: 'angular'}"><h4>Angular</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
-        <a class="nav-link" [routerLink]="[ '/posts', 'ai' ]"><h4>IA</h4></a>
+        <a class="nav-link" [routerLink]="[ '/posts' ]" [queryParams]="{tag: 'ia'}"><h4>IA</h4></a>
       </li>
       <li class="nav-item" (click)="setActive($event)" data-toggle="collapse" data-target=".navbar-collapse.show">
         <a class="nav-link" routerLink="/about"><h4>Sobre</h4></a>

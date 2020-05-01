@@ -14,7 +14,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
   { path: 'post/:id', component: PostComponent },
-  { path: 'posts/:tag', component: MainComponent },
+  { path: 'posts', component: MainComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'search/:query', component: SearchResultsComponent },
   { path: 'post-management', component: PostManagementComponent }, //, canActivate: [AuthGuard] },

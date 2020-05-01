@@ -19,16 +19,18 @@ export class MainComponent implements OnInit {
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      let tag = params.get('tag');
+    this.route.queryParams.subscribe(params => {
+      let tag = params['tag'];
       this.tag = tag ? tag : 'all';
-      this.getLastPostsSummaries(0);
+      
+      let pageNumber = params['page'] - 1;
+      this.getLastPostsSummaries(pageNumber);
     })
   }
 
-  getLastPostsSummaries(page: number){
+  getLastPostsSummaries(pageNumber: number){
     this.loading = true;
-    this.postService.getLastPostsSummaries(page, this.tag).subscribe(
+    this.postService.getLastPostsSummaries(pageNumber, this.tag).subscribe(
       page => {
         this.page = page;
         this.content = page.content;

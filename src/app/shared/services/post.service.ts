@@ -107,6 +107,7 @@ export class PostService {
   createPost(postForm: PostForm): Observable<void> {
     
     const data = new FormData();
+    postForm.post.bannerId = null;
     let strPost = this.convertoToJsonString(postForm.post);
     const blobPost = this.createBlobOfJsonFiles([strPost]);
     

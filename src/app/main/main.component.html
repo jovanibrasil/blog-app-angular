@@ -9,7 +9,7 @@
     <div style="margin-top: 25px;">
         <app-post-card-grid *ngIf="content.length > 0 && !loading" [page]="page"></app-post-card-grid>
         <div *ngIf="content.length == 0 && !loading" class="search-result-info">
-            <p>Desculpe, nenhum post foi encontrado para esta categoria!</p>
+            <p>Desculpe, nenhum post foi encontrado!</p>
         </div>
         <div class="pagination justify-content-center">
             <pagination-controls  
