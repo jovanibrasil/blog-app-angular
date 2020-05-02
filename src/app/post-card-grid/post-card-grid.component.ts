@@ -19,7 +19,6 @@ export class PostCardGridComponent implements OnInit {
   @Input()
   set page(page: Page){
     this.content = page.content;
-    console.log(page.totalElements);
     this.pageConfig = { 
       itemsPerPage: page.size, 
       currentPage: page.number + 1, 

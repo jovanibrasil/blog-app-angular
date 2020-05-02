@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'post/:id', component: PostComponent },
   { path: 'posts', component: MainComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'search/:query', component: SearchResultsComponent },
+  { path: 'search', component: SearchResultsComponent },
   { path: 'post-management', component: PostManagementComponent }, //, canActivate: [AuthGuard] },
   { path: 'blog-management', component: BlogManagementComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
-  { path: '**', component: ErrorViewComponent }
+  { path: '**', component: ErrorViewComponent },
 ];
 
 @NgModule({

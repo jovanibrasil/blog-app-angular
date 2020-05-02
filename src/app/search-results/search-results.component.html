@@ -1,20 +1,35 @@
-<div class="container" style="height: 100%">
-  <div class="row" style="height: 100%">
-       <div *ngIf="!loading">
-        <div class="search-result-info">
-          <p *ngIf="summaries.length == 0">Nenhum resultado foi encontrado!</p>
-          <p *ngIf="summaries.length == 1">Foi encontrado 1 resultado!</p>
-          <p *ngIf="summaries.length > 1">Foram encontrados {{summaries.length}} resultados!</p>
+<div>
+  <div style="height: 100%">
+    <div class="row" style="height: 100%">
+        <div *ngIf="!loading">
+          <div class="search-result-info">
+            <p *ngIf="summaries.length == 0">Nenhum resultado foi encontrado!</p>
+            <p *ngIf="summaries.length == 1">Foi encontrado 1 resultado!</p>
+            <p *ngIf="summaries.length > 1">Foram encontrados {{page.totalElements}} resultados!</p>
+          </div>
+          <div style="padding: 0px 20px">
+              <app-post-card-grid [page]="page"></app-post-card-grid>
+          </div>
         </div>
-        <div style="padding: 0px 20px">
-            <app-post-card-grid [page]="page"></app-post-card-grid>
-        </div>
-       </div>
-       <div *ngIf="loading" class="row" style="position: absolute;display: block;top: 50%;left: 50%;">
+        <div *ngIf="loading" class="row" style="position: absolute;display: block;top: 50%;left: 50%;">
         <div class="spinner-border" style="width: 6rem; height: 6rem; color: brown; " role="status">
-          <span class="sr-only"></span>
-        </div> 
-       </div>
-    
+            <span class="sr-only"></span>
+        </div>
+    </div>
+  </div>
+  <div class="pagination justify-content-center">
+    <pagination-controls  
+        (pageChange)="pageChanged($event)"
+        (pageBoundsCorrection)="pageChanged($event)"
+        maxSize="9"
+        directionLinks="true"
+        autoHide="true"
+        responsive="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
   </div>
 </div>

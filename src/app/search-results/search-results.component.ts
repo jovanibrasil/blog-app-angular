@@ -14,19 +14,20 @@ export class SearchResultsComponent {
   summaries: Summary[] = [];
   loading: boolean = false;
   page: Page;
+  actualQuery: string = '';
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      let query = params.get('query');
-      this.getSearchResult(query);
+    this.route.queryParams.subscribe(params => {
+      this.actualQuery = params['query'];
+      this.getSearchResult(this.actualQuery, 0);
     });
   }
 
-  getSearchResult(query: string){
+  getSearchResult(query: string, pageNumber: number){
     this.loading = true;
-    this.postService.getSearchResult(query).subscribe(
+    this.postService.getSearchResult(query, pageNumber).subscribe(
       page => { 
         this.page = page;
         this.summaries = page.content as Summary[];
@@ -36,6 +37,10 @@ export class SearchResultsComponent {
         this.loading = false;
       }
     );
+  }
+
+  pageChanged(event: any){
+    this.getSearchResult(this.actualQuery, event-1);
   }
 
 }

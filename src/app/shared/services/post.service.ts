@@ -29,8 +29,11 @@ export class PostService {
   
   constructor(private http: HttpClient) {}
 
-  getSearchResult(query: string): Observable<Page> {
-    return this.http.get<Page>(this.SEARCH_POSTS_SUMMARIES, { params : { filter : query } } );
+  getSearchResult(query: string, pageNumber: number): Observable<Page> {
+    let params = new HttpParams()
+      .append('filter', query)
+      .append('page', <string><unknown>pageNumber);
+    return this.http.get<Page>(this.SEARCH_POSTS_SUMMARIES, { params });
   }
 
   /*
