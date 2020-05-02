@@ -1,7 +1,9 @@
-<div class="container h-100">
+<div class="container h-100;">
   <div class="row " >
-    <div class="col-md-2"style="height: 100%;" ></div>
-    <div class="col-md-8 hidden-md-down" 
+    <div class="col-md-3"style="height: 100%; padding: 50px 10px;" >
+      <app-user-info-vbar [user]="user"></app-user-info-vbar>
+    </div>
+    <div class="col-md-9 hidden-md-down" 
       style="height: 100%; background-color: white; display: flex; flex-direction: column; align-items: center;">
       <div style="border-radius: 5px; padding: 10px; margin: 20px 10px;">
         <article>
@@ -27,6 +29,5 @@
       </div>
       <!-- <app-feedback></app-feedback>       -->
     </div>
-    <div class="col-md-2" style="height: 100%;"></div>
   </div>
 </div>
