@@ -12,7 +12,8 @@
             <p>Desculpe, nenhum post foi encontrado!</p>
         </div>
         <div class="pagination justify-content-center">
-            <pagination-controls  
+            <pagination-controls 
+                    *ngIf="content.length != 0"
                     (pageChange)="pageChanged($event)"
                     (pageBoundsCorrection)="pageChanged($event)"
                     maxSize="9"
